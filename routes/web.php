@@ -12,5 +12,21 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('main');
+});
+
+Route::get('about', function () {
+    return view('about');
+});
+
+Route::group([
+    'prefix' => 'news'
+], function () {
+    Route::get('', function () {
+        return view('news');
+    });
+
+    Route::get('{id}', function ($id) {
+        return view('news-page', ['id' => $id]);
+    });
 });
