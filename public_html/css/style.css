@@ -9,6 +9,28 @@ html, body {
     margin: 0;
 }
 
+header > strong { 
+    padding: 15px;
+    position: absolute;
+}
+
+header {
+    display: grid;
+    justify-content: center;
+}
+
+nav {
+    padding: 20px;
+    display: grid;
+    justify-items: center;
+}
+
+footer > span {
+    padding: 20px;
+    position: absolute;
+    bottom: 0;
+}
+
 .full-height {
     height: 100vh;
 }
@@ -38,6 +60,7 @@ html, body {
 }
 
 .links > a {
+    transition: all .4s;
     color: #636b6f;
     padding: 0 25px;
     font-size: 13px;
@@ -45,6 +68,10 @@ html, body {
     letter-spacing: .1rem;
     text-decoration: none;
     text-transform: uppercase;
+}
+
+.links > a:hover {
+    color: black;
 }
 
 .m-b-md {
@@ -67,7 +94,7 @@ html, body {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 1em;
-    padding: 5px 20px;
+    padding: 20px;
 }
 
 
@@ -93,3 +120,33 @@ html, body {
 .container-news a:hover > p {
     opacity: 1;
 }
+
+.container-categories {
+    background: #f8f8f8;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    margin-bottom: 20px;
+}
+
+.container-categories ul {
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+}
+
+.container-categories ul a {
+    transition: all .4s;
+    color: #636b6f;
+    padding: 0 25px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.container-categories ul a:hover {
+    color: black;
+    text-decoration: underline;
+}
+

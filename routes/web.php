@@ -13,20 +13,37 @@
 
 Route::get('/', function () {
     return view('main');
-});
+})->name('main');
 
 Route::get('about', function () {
     return view('about');
-});
+})->name('about');
 
 Route::group([
     'prefix' => 'news'
 ], function () {
-    Route::get('', function () {
-        return view('news');
-    });
+    Route::get('', 'NewsController@index')
+    ->name('news');
 
-    Route::get('{id}', function ($id) {
-        return view('news-page', ['id' => $id]);
-    });
+    Route::get('add', 'NewsController@addView')
+    ->middleware('auth')
+    ->name('news-view');
+
+    Route::post('add', 'NewsController@add')
+    ->middleware('auth')
+    ->name('news-add');
+
+    Route::get('categories', 'NewsController@categories')
+    ->name('categories');
+
+    Route::get('{category}', 'NewsController@category')
+    ->name('news-page');
+
+    Route::get('{category}/{id}', 'NewsController@page')
+    ->name('news-page');
+
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
