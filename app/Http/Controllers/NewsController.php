@@ -109,7 +109,8 @@ class NewsController extends Controller
             [
                 'news' => $this->news,
                 'categories' => $this->categories,
-                'selectedCategory' => $category
+                'selectedCategory' => $category,
+                'skey' => 0
             ]
         );
     }

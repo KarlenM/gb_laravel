@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="title m-b-md">
+<div class="title m-b-md" id="page">
     Новости
 </div>
 <div class="container-news">
