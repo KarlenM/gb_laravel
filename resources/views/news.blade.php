@@ -5,12 +5,13 @@
     Новости
 </div>
 <div class="container-news">
-    @foreach($news as $key => $news)
+    @foreach($news as $news)
         <div>
-            {{-- @dd($news['category']); --}}
             <strong>{{ $news['title'] }}</strong>
-            <a href="{{ url('news/'.key($news['category']).'/'.$key) }}">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, itaque et vel quae sapiente eius quidem cum iusto odit natus aperiam laboriosam totam ratione, laborum deserunt similique, aspernatur cupiditate dolores.</p>
+            <a href="{{ url('news/' . $news['name_lat'] . '/' . $news['id']) }}">
+            @foreach(explode("\n", $news['text']) as $text)
+                <p>{{ $text }}</p>
+            @endforeach
             </a>
         </div>
     @endforeach
