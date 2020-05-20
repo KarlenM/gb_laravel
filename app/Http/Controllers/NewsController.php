@@ -23,13 +23,14 @@ class NewsController extends Controller
         );
     }
 
-    // public function categories(){
-    //     return view('categories', 
-    //         [
-    //             'categories' => $this->categories
-    //         ]
-    //     );
-    // }
+    public function categories(){
+        return view('categories', 
+            [
+                'categories' => News::getCategories(),
+                'news' => News::getAll(),
+            ]
+        );
+    }
 
     public function category($category){
         return view('categories', 

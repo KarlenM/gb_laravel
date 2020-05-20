@@ -25,7 +25,7 @@
                                         <h6>{{ $categoryNews['title'] }}</h6>
                                     </a>
                                     <div class="post-meta">
-                                        <p class="post-excerp">{{ $categoryNews['id'] }}{{ Str::limit($categoryNews['text'], 327, ' ...') }}</p>
+                                        <p class="post-excerp">{{ Str::limit($categoryNews['text'], 327, ' ...') }}</p>
                                     </div>
                                 </div>
                             </div>
