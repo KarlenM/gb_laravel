@@ -165,6 +165,7 @@ return [
         'username'              => 'Никнейм',
         'email'                 => 'E-Mail адрес',
         'first_name'            => 'Имя',
+        'firstname'             => 'Имя',
         'last_name'             => 'Фамилия',
         'password'              => 'Пароль',
         'password_confirmation' => 'Подтверждение пароля',
@@ -172,6 +173,7 @@ return [
         'country'               => 'Страна',
         'address'               => 'Адрес',
         'phone'                 => 'Телефон',
+        'tel'                 => 'Телефон',
         'mobile'                => 'Моб. номер',
         'age'                   => 'Возраст',
         'sex'                   => 'Пол',
@@ -190,5 +192,6 @@ return [
         'time'                  => 'Время',
         'available'             => 'Доступно',
         'size'                  => 'Размер',
+        'message'               => 'Сообщение'
     ],
 ];

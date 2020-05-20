@@ -3,85 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use \App\News;
 
 class NewsController extends Controller
 {
-    protected $categories = [['politics' => 'Политика'], ['economics' => 'Экономика'], ['it' => 'IT'], ['sport' => 'Спорт']];
-    protected $news = [];
-
-    public function __construct() {
-        $this->news = [
-            [
-                'category' => $this->categories[0],
-                'title' => 'Заголовок 1',
-                'text' => "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil repellat ratione nam facere autem consequatur fuga ex beatae, fugit repellendus, dicta id sed animi illum quibusdam magnam voluptatibus laboriosam incidunt?
-                Quibusdam aspernatur laborum eaque, doloremque saepe quidem nisi consectetur, sit est placeat blanditiis odit temporibus. Aut consequuntur repudiandae, id sint similique tempore, sapiente sequi obcaecati consequatur, soluta aliquam temporibus. Officiis.
-                Nemo sequi in, distinctio temporibus necessitatibus eligendi minima corporis minus expedita vitae eos atque error sint fuga assumenda beatae incidunt adipisci repellat reprehenderit illum dolorum pariatur corrupti esse culpa. Earum?
-                Dolorem amet quos minima voluptas dolor, modi in iusto tempore incidunt praesentium atque, perferendis voluptate unde nemo eligendi fugiat necessitatibus neque saepe delectus animi repudiandae quis esse iure! Quaerat, voluptatibus."
-            ],
-            [
-                'category' => $this->categories[1],
-                'title' => 'Заголовок 2',
-                'text' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil repellat ratione nam facere autem consequatur fuga ex beatae, fugit repellendus, dicta id sed animi illum quibusdam magnam voluptatibus laboriosam incidunt?
-                Quibusdam aspernatur laborum eaque, doloremque saepe quidem nisi consectetur, sit est placeat blanditiis odit temporibus. Aut consequuntur repudiandae, id sint similique tempore, sapiente sequi obcaecati consequatur, soluta aliquam temporibus. Officiis.
-                Nemo sequi in, distinctio temporibus necessitatibus eligendi minima corporis minus expedita vitae eos atque error sint fuga assumenda beatae incidunt adipisci repellat reprehenderit illum dolorum pariatur corrupti esse culpa. Earum?
-                Dolorem amet quos minima voluptas dolor, modi in iusto tempore incidunt praesentium atque, perferendis voluptate unde nemo eligendi fugiat necessitatibus neque saepe delectus animi repudiandae quis esse iure! Quaerat, voluptatibus.'
-            ],
-            [
-                'category' => $this->categories[2],
-                'title' => 'Заголовок 3',
-                'text' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil repellat ratione nam facere autem consequatur fuga ex beatae, fugit repellendus, dicta id sed animi illum quibusdam magnam voluptatibus laboriosam incidunt?
-                Quibusdam aspernatur laborum eaque, doloremque saepe quidem nisi consectetur, sit est placeat blanditiis odit temporibus. Aut consequuntur repudiandae, id sint similique tempore, sapiente sequi obcaecati consequatur, soluta aliquam temporibus. Officiis.
-                Nemo sequi in, distinctio temporibus necessitatibus eligendi minima corporis minus expedita vitae eos atque error sint fuga assumenda beatae incidunt adipisci repellat reprehenderit illum dolorum pariatur corrupti esse culpa. Earum?
-                Dolorem amet quos minima voluptas dolor, modi in iusto tempore incidunt praesentium atque, perferendis voluptate unde nemo eligendi fugiat necessitatibus neque saepe delectus animi repudiandae quis esse iure! Quaerat, voluptatibus.'
-            ],
-            [
-                'category' => $this->categories[3],
-                'title' => 'Заголовок 4',
-                'text' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil repellat ratione nam facere autem consequatur fuga ex beatae, fugit repellendus, dicta id sed animi illum quibusdam magnam voluptatibus laboriosam incidunt?
-                Quibusdam aspernatur laborum eaque, doloremque saepe quidem nisi consectetur, sit est placeat blanditiis odit temporibus. Aut consequuntur repudiandae, id sint similique tempore, sapiente sequi obcaecati consequatur, soluta aliquam temporibus. Officiis.
-                Nemo sequi in, distinctio temporibus necessitatibus eligendi minima corporis minus expedita vitae eos atque error sint fuga assumenda beatae incidunt adipisci repellat reprehenderit illum dolorum pariatur corrupti esse culpa. Earum?
-                Dolorem amet quos minima voluptas dolor, modi in iusto tempore incidunt praesentium atque, perferendis voluptate unde nemo eligendi fugiat necessitatibus neque saepe delectus animi repudiandae quis esse iure! Quaerat, voluptatibus.'
-            ],
-            [
-                'category' => $this->categories[0],
-                'title' => 'Заголовок 5',
-                'text' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil repellat ratione nam facere autem consequatur fuga ex beatae, fugit repellendus, dicta id sed animi illum quibusdam magnam voluptatibus laboriosam incidunt?
-                Quibusdam aspernatur laborum eaque, doloremque saepe quidem nisi consectetur, sit est placeat blanditiis odit temporibus. Aut consequuntur repudiandae, id sint similique tempore, sapiente sequi obcaecati consequatur, soluta aliquam temporibus. Officiis.
-                Nemo sequi in, distinctio temporibus necessitatibus eligendi minima corporis minus expedita vitae eos atque error sint fuga assumenda beatae incidunt adipisci repellat reprehenderit illum dolorum pariatur corrupti esse culpa. Earum?
-                Dolorem amet quos minima voluptas dolor, modi in iusto tempore incidunt praesentium atque, perferendis voluptate unde nemo eligendi fugiat necessitatibus neque saepe delectus animi repudiandae quis esse iure! Quaerat, voluptatibus.'
-            ],
-            [
-                'category' => $this->categories[1],
-                'title' => 'Заголовок 6',
-                'text' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil repellat ratione nam facere autem consequatur fuga ex beatae, fugit repellendus, dicta id sed animi illum quibusdam magnam voluptatibus laboriosam incidunt?
-                Quibusdam aspernatur laborum eaque, doloremque saepe quidem nisi consectetur, sit est placeat blanditiis odit temporibus. Aut consequuntur repudiandae, id sint similique tempore, sapiente sequi obcaecati consequatur, soluta aliquam temporibus. Officiis.
-                Nemo sequi in, distinctio temporibus necessitatibus eligendi minima corporis minus expedita vitae eos atque error sint fuga assumenda beatae incidunt adipisci repellat reprehenderit illum dolorum pariatur corrupti esse culpa. Earum?
-                Dolorem amet quos minima voluptas dolor, modi in iusto tempore incidunt praesentium atque, perferendis voluptate unde nemo eligendi fugiat necessitatibus neque saepe delectus animi repudiandae quis esse iure! Quaerat, voluptatibus.'
-            ],
-            [
-                'category' => $this->categories[2],
-                'title' => 'Заголовок 7',
-                'text' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil repellat ratione nam facere autem consequatur fuga ex beatae, fugit repellendus, dicta id sed animi illum quibusdam magnam voluptatibus laboriosam incidunt?
-                Quibusdam aspernatur laborum eaque, doloremque saepe quidem nisi consectetur, sit est placeat blanditiis odit temporibus. Aut consequuntur repudiandae, id sint similique tempore, sapiente sequi obcaecati consequatur, soluta aliquam temporibus. Officiis.
-                Nemo sequi in, distinctio temporibus necessitatibus eligendi minima corporis minus expedita vitae eos atque error sint fuga assumenda beatae incidunt adipisci repellat reprehenderit illum dolorum pariatur corrupti esse culpa. Earum?
-                Dolorem amet quos minima voluptas dolor, modi in iusto tempore incidunt praesentium atque, perferendis voluptate unde nemo eligendi fugiat necessitatibus neque saepe delectus animi repudiandae quis esse iure! Quaerat, voluptatibus.'
-            ],
-            [
-                'category' => $this->categories[0],
-                'title' => 'Заголовок 8',
-                'text' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil repellat ratione nam facere autem consequatur fuga ex beatae, fugit repellendus, dicta id sed animi illum quibusdam magnam voluptatibus laboriosam incidunt?
-                Quibusdam aspernatur laborum eaque, doloremque saepe quidem nisi consectetur, sit est placeat blanditiis odit temporibus. Aut consequuntur repudiandae, id sint similique tempore, sapiente sequi obcaecati consequatur, soluta aliquam temporibus. Officiis.
-                Nemo sequi in, distinctio temporibus necessitatibus eligendi minima corporis minus expedita vitae eos atque error sint fuga assumenda beatae incidunt adipisci repellat reprehenderit illum dolorum pariatur corrupti esse culpa. Earum?
-                Dolorem amet quos minima voluptas dolor, modi in iusto tempore incidunt praesentium atque, perferendis voluptate unde nemo eligendi fugiat necessitatibus neque saepe delectus animi repudiandae quis esse iure! Quaerat, voluptatibus.'
-            ]
-        ];
-    }
-
     public function index(){
         return view('news', 
             [
-                'news' => $this->news
+                'news' => News::getAll()
             ]
         );
     }
@@ -89,26 +18,23 @@ class NewsController extends Controller
     public function page($category, $id){
         return view('news-page', 
             [
-                'news' => $this->news,
-                'category' => $category,
-                'id' => $id
+                'news' => News::getPage($id),
             ]
         );
     }
 
-    public function categories(){
-        return view('categories', 
-            [
-                'categories' => $this->categories
-            ]
-        );
-    }
+    // public function categories(){
+    //     return view('categories', 
+    //         [
+    //             'categories' => $this->categories
+    //         ]
+    //     );
+    // }
 
     public function category($category){
         return view('categories', 
             [
-                'news' => $this->news,
-                'categories' => $this->categories,
+                'news' => News::getAll(),
                 'selectedCategory' => $category,
                 'skey' => 0
             ]
@@ -118,17 +44,40 @@ class NewsController extends Controller
     public function addView(){
         return view('add', 
             [
-                'categories' => $this->categories,
+                'categories' => News::getCategories()
             ]
         );
     }
 
     public function add(Request $request){
-        dd($request->all());
+        $data = [
+            'title' => $request->title,
+            'img' => $request->img,
+            'category_id' => $request->category,
+            'text' => $request->news
+        ];
 
-        return view('add', 
+
+        return view('add',
             [
-                'categories' => $this->categories,
+                'categories' => News::getCategories(),
+                'result' => News::addNews($data)
+            ]
+        );
+    }
+
+    public function downloadOrder(Request $request){
+        $data = [
+            'name' => $request->name,
+            'tel' => $request->tel,
+            'email' => $request->email,
+            'message' => $request->message
+        ];
+
+
+        return view('main',
+            [
+                'result' => News::downloadOrder($data)
             ]
         );
     }
