@@ -70,6 +70,8 @@
                                 <li @if(request()->path() == 'news/economics') class="active" @endif><a href="{{ route('news') }}/economics">Экономика</a></li>
                                 <li @if(request()->path() == 'news/it') class="active" @endif><a href="{{ route('news') }}/it">ИТ</a></li>
                                 <li @if(request()->path() == 'news/sport') class="active" @endif><a href="{{ route('news') }}/sport">Спорт</a></li>
+                                <li @if(Route::currentRouteName() == 'download-order') class="active" @endif><a href="{{ route('download-order') }}">Выгрузка данных</a></li>
+                                <li @if(Route::currentRouteName() == 'feedback') class="active" @endif><a href="{{ route('feedback') }}">Обратная связь</a></li>
                                 <li @if(Route::currentRouteName() == 'about') class="active" @endif><a href="{{ route('about') }}">О проекте</a></li>
                             </ul>
                         </div>
