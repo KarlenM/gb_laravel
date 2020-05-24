@@ -18,7 +18,7 @@ class CreateNewsTable extends Migration
             $table->string('author')->nullable(false);
             $table->bigInteger('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('news_category')->onDelete('cascade');
-            $table->mediumText('title')->nullable(false);
+            $table->string('title')->nullable(false);
             $table->string('img')->nullable(false);
             $table->longText('text')->nullable(false);
             $table->boolean('active')->nullable(false)->default(true);
@@ -26,7 +26,7 @@ class CreateNewsTable extends Migration
             $table->foreign('updated_user_id')->references('id')->on('users');
             $table->bigInteger('created_user_id')->unsigned();
             $table->foreign('created_user_id')->references('id')->on('users');
-            $table->ipAddress('IP')->nullable(false);
+            $table->ipAddress('ip')->nullable(false);
             $table->timestamps();
         });
     }

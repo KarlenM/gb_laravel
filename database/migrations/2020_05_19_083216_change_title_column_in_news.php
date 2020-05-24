@@ -26,7 +26,7 @@ class ChangeTitleColumnInNews extends Migration
     public function down()
     {
         Schema::table('news', function (Blueprint $table) {
-            //
+            $table->string('title')->nullable(false)->change();
         });
     }
 }

@@ -50,7 +50,7 @@ Route::group([
     ->middleware('auth')
     ->name('news-add');
 
-    //Страница категории новостей
+    // Страница категории новостей
     Route::get('categories', 'NewsController@categories')
     ->name('categories');
 

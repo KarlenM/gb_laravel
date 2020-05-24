@@ -21,7 +21,7 @@ class CreateNewsCategoryTable extends Migration
             $table->foreign('updated_user_id')->references('id')->on('users');
             $table->bigInteger('created_user_id')->unsigned();
             $table->foreign('created_user_id')->references('id')->on('users');
-            $table->ipAddress('IP')->nullable(false);
+            $table->ipAddress('ip')->nullable(false);
             $table->timestamps();
         });
     }
