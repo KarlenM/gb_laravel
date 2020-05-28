@@ -13,7 +13,7 @@ class CreateTableResource extends Migration
      */
     public function up()
     {
-        Schema::create('news_resources', function (Blueprint $table) {
+        Schema::create('resources', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->mediumText('name')->nullable(false);
             $table->bigInteger('updated_user_id')->unsigned();

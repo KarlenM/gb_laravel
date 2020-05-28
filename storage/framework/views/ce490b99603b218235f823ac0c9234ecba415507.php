@@ -5,7 +5,7 @@
             <?php if(session('success')): ?>
                 <h2><?php echo e(session('success')); ?></h2>
             <?php else: ?>
-            <form method="POST" action="<?php echo e(route('download-order')); ?>">
+            <form method="POST" action="<?php echo e(route('download-order.store')); ?>">
                 <?php echo csrf_field(); ?>
                 <span>Имя</span>
                 <input type="text" name="firstname" value="<?php echo e(old('firstname')); ?>">
@@ -47,23 +47,6 @@ endif; ?>
             </form>
             <?php endif; ?>
         </div>
-        <div id="orders-list">
-            <div>№</div>
-            <div>Имя</div>
-            <div>Дата</div>
-            <div>Телефон</div>
-            <div>Email</div>
-            <div>Сообщение</div>
-            <hr>
-            <?php $__currentLoopData = $orders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $order): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <div><?php echo e($order['id']); ?></div>
-                <div><?php echo e($order['firstname']); ?></div>
-                <div><?php echo e(date('d.m.y', strtotime($order['created_at']))); ?></div>
-                <div><?php echo e($order['tel']); ?></div>
-                <div><?php echo e($order['email']); ?></div>
-                <div><?php echo e($order['message']); ?></div>
-            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-        </div>
     </div>
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /var/www/html/resources/views/download-order.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.master', ['categories' => $categories], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /var/www/html/resources/views/download-order.blade.php ENDPATH**/ ?>

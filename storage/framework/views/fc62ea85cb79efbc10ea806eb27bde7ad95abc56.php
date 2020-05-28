@@ -14,7 +14,7 @@
                     <?php endif; ?>
                     Вы вошли!
                     <ul>
-                        <li><a href="<?php echo e(route('news-view')); ?>" title="Добавить новость">Добавить новость</a></li>
+                        <li><a href="<?php echo e(route('news.create')); ?>" title="Добавить новость">Управление новостями</a></li>
                     </ul>
                 </div>
             </div>

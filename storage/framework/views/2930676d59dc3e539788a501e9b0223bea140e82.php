@@ -6,7 +6,7 @@
                 <div class="card-header">Вход</div>
 
                 <div class="card-body">
-                    <form method="POST" action="<?php echo e(route('login')); ?>">
+                    <form method="POST" action="<?php echo e(route('admin.login')); ?>">
                         <?php echo csrf_field(); ?>
 
                         <div class="form-group row">
@@ -71,8 +71,8 @@ endif; ?>
                                     Войти
                                 </button>
 
-                                <?php if(Route::has('password.request')): ?>
-                                    <a class="btn btn-link" href="<?php echo e(route('password.request')); ?>">
+                                <?php if(Route::has('admin.password.request')): ?>
+                                    <a class="btn btn-link" href="<?php echo e(route('admin.password.request')); ?>">
                                         Забыли пароль?
                                     </a>
                                 <?php endif; ?>
@@ -86,4 +86,4 @@ endif; ?>
 </div>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /var/www/html/resources/views/auth/login.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /var/www/html/resources/views/auth/login.blade.php ENDPATH**/ ?>

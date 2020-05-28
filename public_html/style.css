@@ -1217,7 +1217,6 @@ div.welcome-screen > h2 {
 
 .add-form {
   display: grid;
-  justify-self: right;
 }
 
 .add-form input,
@@ -1246,7 +1245,7 @@ div.welcome-screen > h2 {
 }
 
 .main-page {
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-gap: 2em;
   display: grid;
   align-items: start;
@@ -1254,6 +1253,7 @@ div.welcome-screen > h2 {
 }
 
 #orders-list,
+#news-list
 #feedback-list {
   display: grid;
   grid-column-gap: 2em;
@@ -1266,6 +1266,10 @@ div.welcome-screen > h2 {
   grid-template-columns: repeat(6, max-content);
 }
 
+#news-list {
+  grid-template-columns: repeat(8, max-content);
+}
+
 #feedback-list {
   grid-template-columns: repeat(4, max-content);
 }
@@ -1276,6 +1280,14 @@ div.welcome-screen > h2 {
 #orders-list > div:nth-child(4),
 #orders-list > div:nth-child(5),
 #orders-list > div:nth-child(6),
+#news-list > div:first-child,
+#news-list > div:nth-child(2),
+#news-list > div:nth-child(3),
+#news-list > div:nth-child(4),
+#news-list > div:nth-child(5),
+#news-list > div:nth-child(6),
+#news-list > div:nth-child(7),
+#news-list > div:nth-child(8),
 #feedback-list > div:first-child,
 #feedback-list > div:nth-child(2),
 #feedback-list > div:nth-child(3),
@@ -1286,12 +1298,17 @@ div.welcome-screen > h2 {
 }
 
 #orders-list > hr,
+#news-list > hr,
 #feedback-list > hr {
   margin: 3px;
   border-top: 1px solid #ee002d;
 }
 #feedback-list > hr  {
   grid-column: 1/5;
+}
+
+#news-list > hr {
+  grid-column: 1/9;
 }
 
 #orders-list > hr {

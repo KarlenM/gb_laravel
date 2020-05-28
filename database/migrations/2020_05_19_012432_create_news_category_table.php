@@ -13,7 +13,7 @@ class CreateNewsCategoryTable extends Migration
      */
     public function up()
     {
-        Schema::create('news_category', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name_cyr')->nullable(false);
             $table->string('name_lat')->nullable(false);

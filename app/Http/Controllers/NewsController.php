@@ -2,83 +2,59 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use \App\News;
+use \App\Models\Categories;
+use \App\Models\News;
 
 class NewsController extends Controller
 {
     public function index(){
-        return view('news', 
+        $news = News::select(
+            'id',
+            'author',
+            'category_id',
+            'resource_id',
+            'title',
+            'img',
+            'text',
+            'active',
+            'created_at'
+        )->get();
+
+        $categories = Categories::select(
+            'name_lat',
+            'name_cyr'
+        )->get();
+
+        return view('index',
             [
-                'news' => News::getAll()
+                'news' => $news,
+                'categories' => $categories
             ]
         );
     }
 
-    public function page($category, $id){
-        return view('news-page', 
+    public function show($category, $id){
+        $categories = Categories::select(
+            'name_lat',
+            'name_cyr'
+        )->get();
+
+        $news = News::select(
+            'id',
+            'author',
+            'category_id',
+            'resource_id',
+            'title',
+            'img',
+            'text',
+            'active',
+            'created_at'
+        )->find($id);
+
+        return view('news.show', 
             [
-                'news' => News::getPage($id),
-            ]
-        );
-    }
-
-    public function categories(){
-        return view('categories', 
-            [
-                'categories' => News::getCategories(),
-                'news' => News::getAll(),
-            ]
-        );
-    }
-
-    public function category($category){
-        return view('categories', 
-            [
-                'news' => News::getAll(),
-                'selectedCategory' => $category,
-                'skey' => 0
-            ]
-        );
-    }
-
-    public function addView(){
-        return view('add', 
-            [
-                'categories' => News::getCategories()
-            ]
-        );
-    }
-
-    public function add(Request $request){
-        $data = [
-            'title' => $request->title,
-            'img' => $request->img,
-            'category_id' => $request->category,
-            'text' => $request->news
-        ];
-
-
-        return view('add',
-            [
-                'categories' => News::getCategories(),
-                'result' => News::addNews($data)
-            ]
-        );
-    }
-
-    public function downloadOrder(Request $request){
-        $data = [
-            'name' => $request->name,
-            'tel' => $request->tel,
-            'email' => $request->email,
-            'message' => $request->message
-        ];
-
-
-        return view('main',
-            [
-                'result' => News::downloadOrder($data)
+                'news' => $news,
+                'categories' => $categories,
             ]
         );
     }

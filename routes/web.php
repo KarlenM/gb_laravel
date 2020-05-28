@@ -11,60 +11,45 @@
 |
 */
 
-// Главная страница
-Route::get('/', function () {
-    return view('main');
-})->name('main');
+// - Личный кабинет -
+Route::prefix('admin')->name('admin.')->group(
+    function() {
+        Auth::routes();
 
-// О проекте
-Route::get('about', function () {
-    return view('about');
-})->name('about');
+        Route::get('', 'Admin\HomeController@index')->name('main');
+
+        // Новости
+        Route::group([
+            'middleware' => ['auth']
+        ], function () {
+            Route::resource('news', 'Admin\NewsController');
+            Route::resource('categories', 'Admin\CategoriesController');
+            Route::resource('resources', 'Admin\ResourcesController');
+            Route::resource('feedback', 'Admin\FeedbackController');
+            Route::resource('download-order', 'Admin\DownloadOrderController');
+        });
+    }
+);
+// -------------------
+
+// Главная страница
+Route::get('/', 'NewsController@index')
+->name('main');
 
 // Заказ выгрузки данных
-Route::get('download-order', 'DownloadOrderController@index')
-->name('download-order');
-Route::post('download-order', 'DownloadOrderController@add')
-->name('download-order');
+Route::resource('download-order', 'DownloadOrderController');
 
 // Обратная связь
-Route::get('feedback', 'FeedbackController@index')
-->name('feedback');
-Route::post('feedback', 'FeedbackController@add')
-->name('feedback');
+Route::resource('feedback', 'FeedbackController');
 
-// Новости
-Route::group([
-    'prefix' => 'news'
-], function () {
-    Route::get('', 'NewsController@index')
-    ->name('news');
+// О проекте
+Route::get('about', 'AboutController@index')
+->name('about');
 
-    // Страница добавления новости из личного кабинета
-    Route::get('add', 'NewsController@addView')
-    ->middleware('auth')
-    ->name('news-view');
+// Новость
+Route::get('{category}/{id}', 'NewsController@show')
+->name('news.show');
 
-    // Добавление новости из личного кабинета
-    Route::post('add', 'NewsController@add')
-    ->middleware('auth')
-    ->name('news-add');
-
-    // Страница категории новостей
-    Route::get('categories', 'NewsController@categories')
-    ->name('categories');
-
-    // Список категорий новостей
-    Route::get('{category}', 'NewsController@category')
-    ->name('news-page');
-
-    // Выбранная категория Новостей
-    Route::get('{category}/{id}', 'NewsController@page')
-    ->name('news-page');
-});
-
-// Маршруты авторизации
-Auth::routes();
-
-// Личный кабинет
-Route::get('/home', 'HomeController@index')->name('home');
+// Новости по категориям
+Route::get('{category}', 'CategoriesController@index')
+->name('news.category');

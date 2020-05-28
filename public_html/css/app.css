@@ -57,3 +57,194 @@ span.success {
     font-weight: bold;
     font-size: 20px;
 }
+
+
+#orders-list,
+/* #news-list, */
+#feedback-list {
+  display: grid;
+  grid-column-gap: 2em;
+  justify-content: center;
+  padding: 30px;
+  justify-self: left;
+}
+
+#news-list {
+  display: grid;
+  grid-gap: 1em;
+  grid-template-columns: repeat(9, auto);
+  padding: 40px 20px 20px 20px;
+}
+
+#resources-list {
+  display: grid;
+  grid-gap: 1em;
+  grid-template-columns: repeat(5, auto);
+  padding: 40px 20px 20px 20px;
+  justify-content: center;
+}
+
+#categories-list {
+  display: grid;
+  grid-gap: 1em;
+  grid-template-columns: repeat(5, auto);
+  padding: 40px 20px 20px 20px;
+}
+
+#download-order-list {
+  display: grid;
+  grid-gap: 1em;
+  grid-template-columns: repeat(5, auto);
+  padding: 40px 20px 20px 20px;
+  justify-content: center;
+}
+
+#orders-list {
+  grid-template-columns: repeat(6, max-content);
+}
+
+#feedback-list {
+  grid-template-columns: repeat(5, max-content);
+}
+
+#download-order-list {
+  grid-template-columns: repeat(7, max-content);
+}
+
+#resources-list {
+  grid-template-columns: repeat(5, max-content);
+}
+
+#resources-list > div:first-child,
+#resources-list > div:nth-child(2),
+#resources-list > div:nth-child(3),
+#resources-list > div:nth-child(4),
+#download-order-list > div:first-child,
+#download-order-list > div:nth-child(2),
+#download-order-list > div:nth-child(3),
+#download-order-list > div:nth-child(4),
+#download-order-list > div:nth-child(5),
+#download-order-list > div:nth-child(6),
+#download-order-list > div:nth-child(7),
+#categories-list > div:first-child,
+#categories-list > div:nth-child(2),
+#categories-list > div:nth-child(3),
+#categories-list > div:nth-child(4),
+#categories-list > div:nth-child(5),
+#orders-list > div:first-child,
+#orders-list > div:nth-child(2),
+#orders-list > div:nth-child(3),
+#orders-list > div:nth-child(4),
+#orders-list > div:nth-child(5),
+#orders-list > div:nth-child(6),
+#news-list > div:first-child,
+#news-list > div:nth-child(2),
+#news-list > div:nth-child(3),
+#news-list > div:nth-child(4),
+#news-list > div:nth-child(5),
+#news-list > div:nth-child(6),
+#news-list > div:nth-child(7),
+#news-list > div:nth-child(8),
+#news-list > div:nth-child(9),
+#feedback-list > div:first-child,
+#feedback-list > div:nth-child(2),
+#feedback-list > div:nth-child(3),
+#feedback-list > div:nth-child(4),
+#feedback-list > div:nth-child(5) {
+  font-weight: bold;
+  text-align: left;
+}
+
+#orders-list > hr,
+#resources-list > hr,
+#download-order-list > hr,
+#news-list > hr,
+#categories-list > hr,
+#feedback-list > hr {
+  margin: 3px;
+  border-top: 1px solid #ee002d;
+}
+
+#feedback-list > hr  {
+  grid-column: 1/6;
+}
+
+#news-list > hr {
+  grid-column: 1/10;
+}
+
+#orders-list > hr {
+  grid-column: 1/7;
+}
+
+#categories-list > hr {
+  grid-column: 1/6;
+}
+
+#download-order-list > hr {
+  grid-column: 1/8;
+}
+
+#resources-list > hr {
+  grid-column: 1/6;
+}
+
+#download-order-list > .control,
+#resources-list > .control,
+#news-list > .control,
+#feedback-list > .control,
+#categories-list > .control {
+    display: grid;
+    align-content: center;
+    grid-gap: 1em;
+    align-content: start;
+}
+
+input, select, textarea, a {
+  outline: none;
+}
+
+#resources-list > div.control > form > button,
+#download-order-list > div.control > form > button,
+#news-list > div.control > form > button,
+#feedback-list > div.control > form > button,
+#categories-list > div.control > form > button {
+  border: none;
+  color: #ff0000;
+  background: unset;
+  padding: 0;
+}
+
+#news-list > div.control > form > button:hover,
+#resources-list > div.control > form > button:hover,
+#download-order-list > div.control > form > button:hover,
+#feedback-list > div.control > form > button:hover,
+#categories-list > div.control > form > button:hover {
+  text-decoration: underline;
+  color: #e3342f;
+  cursor: pointer;
+}
+
+#news.add-link,
+#resources.add-link,
+#download-order.add-link,
+#feedback.add-link,
+#categories.add-link {
+  justify-content: center;
+  display: grid;
+  font-size: 18px;
+}
+
+#news-list ul.pagination,
+#resources-list ul.pagination,
+#download-order-list ul.pagination,
+#feedback-list ul.pagination,
+#categories-list ul.pagination {
+  grid-column: 1/-1;
+  justify-content: center;
+}
+
+h3.control {
+  text-align: center;
+  margin-bottom: 0;
+}
