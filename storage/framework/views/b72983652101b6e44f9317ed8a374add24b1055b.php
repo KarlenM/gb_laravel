@@ -1,6 +1,6 @@
 <?php $__env->startSection('content'); ?>
+<?php echo $__env->make('admin.partials.messages', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <a href="<?php echo e(route('admin.news.create')); ?>" title="Добавить новость" id="news" class="add-link">Добавить новость</a>
-
     <div id="news-list">
         <?php echo e($news->links()); ?>
 
@@ -24,8 +24,16 @@
             <div><?php echo e(Str::limit($oneNews['text'], 327, ' ...')); ?></div>
             <div><?php echo e($oneNews['img']); ?></div>
             <div class="control">
-                <a href="<?php echo e(route('admin.news.edit', ['news' => $oneNews])); ?>" title="Редактировать">Редактировать</a>
-                <form action="<?php echo e(route('admin.news.destroy', ['news' => $oneNews])); ?>" method="POST">
+                <a href="<?php echo e(route('admin.news.edit', 
+                        [
+                            'news' => $oneNews
+                        ]
+                    )); ?>" title="Редактировать">Редактировать</a>
+                <form action="<?php echo e(route('admin.news.destroy',
+                        [
+                            'news' => $oneNews
+                        ]
+                    )); ?>" method="POST">
                     <?php echo csrf_field(); ?>
                     <?php echo method_field('DELETE'); ?>
                     <button type="submit">Удалить</button>

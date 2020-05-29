@@ -1,6 +1,11 @@
 <?php $__env->startSection('content'); ?>
 <?php echo $__env->make('admin.resources.partials.messages', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-    <a href="<?php echo e(route('admin.resources.create')); ?>" title="Добавить ресурс" id="news" class="add-link">Добавить ресурс</a>
+    <a 
+        href="<?php echo e(route('admin.resources.create')); ?>" 
+        title="Добавить ресурс" 
+        id="news" 
+        class="add-link"
+    >Добавить ресурс</a>
 
     <div id="resources-list">
         <?php echo e($resources->links()); ?>
@@ -15,8 +20,16 @@
             <div><?php echo e(date('d.m.y', strtotime($resource['created_at']))); ?></div>
             <div><?php echo e($resource['name']); ?></div>
             <div class="control">
-                <a href="<?php echo e(route('admin.resources.edit', ['resources' => $resource])); ?>" title="Редактировать">Редактировать</a>
-                <form action="<?php echo e(route('admin.resources.destroy', ['resources' => $resource])); ?>" method="POST">
+                <a href="<?php echo e(route('admin.resources.edit',
+                        [
+                            'resource' => $resource
+                        ]
+                    )); ?>" title="Редактировать">Редактировать</a>
+                <form action="<?php echo e(route('admin.resources.destroy',
+                        [
+                            'resource' => $resource
+                        ]
+                    )); ?>" method="POST">
                     <?php echo csrf_field(); ?>
                     <?php echo method_field('DELETE'); ?>
                     <button type="submit">Удалить</button>

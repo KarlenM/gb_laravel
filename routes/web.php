@@ -14,19 +14,36 @@
 // - Личный кабинет -
 Route::prefix('admin')->name('admin.')->group(
     function() {
+
+        // Маршруты авторизации
         Auth::routes();
 
+        // Главняа страница
         Route::get('', 'Admin\HomeController@index')->name('main');
 
         // Новости
         Route::group([
             'middleware' => ['auth']
         ], function () {
-            Route::resource('news', 'Admin\NewsController');
-            Route::resource('categories', 'Admin\CategoriesController');
-            Route::resource('resources', 'Admin\ResourcesController');
-            Route::resource('feedback', 'Admin\FeedbackController');
-            Route::resource('download-order', 'Admin\DownloadOrderController');
+            // Новости
+            Route::resource('news', 'Admin\NewsController')
+            ->except(['show']);
+
+            // Категории
+            Route::resource('categories', 'Admin\CategoriesController')
+            ->except(['show']);
+
+            // Ресурсы
+            Route::resource('resources', 'Admin\ResourcesController')
+            ->except(['show']);
+
+            // Обратная связь
+            Route::resource('feedback', 'Admin\FeedbackController'
+            )->except(['show', 'create', 'store']);
+
+            // Заказ выгрузки
+            Route::resource('download-order', 'Admin\DownloadOrderController')
+            ->except(['show', 'create', 'store']);
         });
     }
 );
@@ -36,11 +53,13 @@ Route::prefix('admin')->name('admin.')->group(
 Route::get('/', 'NewsController@index')
 ->name('main');
 
-// Заказ выгрузки данных
-Route::resource('download-order', 'DownloadOrderController');
-
 // Обратная связь
-Route::resource('feedback', 'FeedbackController');
+Route::resource('feedback', 'FeedbackController')
+->only(['index', 'store']);
+
+// Заказ выгрузки
+Route::resource('download-order', 'DownloadOrderController')
+->only(['index', 'store']);
 
 // О проекте
 Route::get('about', 'AboutController@index')

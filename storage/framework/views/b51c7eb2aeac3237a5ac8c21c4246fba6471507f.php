@@ -12,18 +12,20 @@
                                 <a href="<?php echo e(route('news.show', 
                                         [
                                             'category' => $news[0]->categories->name_lat, 
-                                            'news' => $news[0]
+                                            'id' => $news[0]->id
                                         ]
                                     )); ?>"><img src="img/bg-img/3.jpg" alt=""></a>
                             </div>
                             <div class="post-data">
                                 <a href="<?php echo e(route('news.category', 
-                                        ['category' => $news[0]->categories->name_lat]
+                                        [
+                                            'category' => $news[0]->categories->name_lat
+                                            ]
                                     )); ?>" class="post-catagory"><?php echo e($news[0]->categories->name_cyr); ?></a>
                                 <a href="<?php echo e(route('news.show',
                                     [
                                         'category' => $news[0]->categories->name_lat, 
-                                        'news' => $news[0]
+                                        'id' => $news[0]->id
                                     ])); ?>" class="post-title">
                                     <h6><?php echo e($news[0]['title']); ?></h6>
                                 </a>
@@ -54,19 +56,21 @@
                                 <a href="<?php echo e(route('news.show', 
                                         [
                                             'category' => $newsCategory->categories->name_lat, 
-                                            'news' => $newsCategory
+                                            'id' => $newsCategory->id
                                         ]
                                     )); ?>"><img src="img/bg-img/<?php echo e($key); ?>.jpg" alt=""></a>
                             </div>
                             <div class="post-data">
                                 <a href="<?php echo e(route('news.category', 
-                                        ['category' => $newsCategory->categories->name_lat]
+                                        [
+                                            'category' => $newsCategory->categories->name_lat
+                                        ]
                                     )); ?>" class="post-catagory"><?php echo e($newsCategory->categories->name_cyr); ?></a>
                                 <div class="post-meta">
                                     <a href="<?php echo e(route('news.show', 
                                             [
                                                 'category' => $newsCategory->categories->name_lat,
-                                                'news' => $newsCategory
+                                                'id' => $newsCategory->id
                                             ]
                                         )); ?>" class="post-title">
                                         <h6><?php echo e($newsCategory['title']); ?></h6>
@@ -99,18 +103,20 @@
                         <a href="<?php echo e(route('news.show',
                             [
                                 'category' => $news->categories->name_lat, 
-                                'news' => $news
+                                'id' => $news->id
                             ])); ?>"><img src="img/bg-img/<?php echo e($key); ?>.jpg" alt=""></a>
                     </div>
                     <div class="post-data">
                         <a href="<?php echo e(route('news.category',
-                                ['category' => $news->categories->name_lat]
+                                [
+                                    'category' => $news->categories->name_lat
+                                ]
                             )); ?>" class="post-catagory"><?php echo e($news->categories->name_cyr); ?></a>
                         <div class="post-meta">
                             <a href="<?php echo e(route('news.show',
                                     [
                                         'category' => $news->categories->name_lat,
-                                        'news' => $news
+                                        'id' => $news->id
                                     ]
                                 )); ?>" class="post-title">
                                 <h6><?php echo e($news['title']); ?></h6>
@@ -129,4 +135,4 @@
     </div>
 </div>
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /var/www/html/resources/views/index.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.master', ['categories' => $categories], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /var/www/html/resources/views/index.blade.php ENDPATH**/ ?>

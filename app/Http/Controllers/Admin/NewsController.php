@@ -69,6 +69,7 @@ class NewsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
+     * @param  \App\Models\News  $news
      * @param  \App\Http\Requests\StoreNewsPost  $request
      * @return \Illuminate\Http\Response
      */
@@ -77,7 +78,7 @@ class NewsController extends Controller
         $news->fill($request->validated())->save();
 
         if($news)
-            return redirect()->route('admin.news.create')
+            return redirect()->route('admin.news.index')
                 ->with('success', 'Новость добавлена');
         else
             return back()->with('error', 'Ошибка добавления новости');
@@ -86,10 +87,10 @@ class NewsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\News  $news
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(News $news)
     {
         //
     }
@@ -97,16 +98,28 @@ class NewsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\News  $news
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(News $news)
     {
+        $categories = Categories::select(
+            'id',
+            'name_lat',
+            'name_cyr'
+        )->get();
+
+        $resources = Resources::select(
+            'id',
+            'name',
+            'created_at'
+        )->get();
+
         return view('admin.news.edit', 
             [
-                'news' => News::find($id),
-                'categories' => Categories::all(),
-                'resources' => Resources::all()
+                'news' => News::find($news->id),
+                'categories' => $categories,
+                'resources' => $resources
             ]
         );
     }
@@ -114,16 +127,16 @@ class NewsController extends Controller
     /**
      * Update the specified resource in storage.
      *
+     * @param  \App\Models\News  $news
      * @param \App\Http\Requests\StoreNewsPost  $request
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreNewsPost $request, $id)
+    public function update(News $news, StoreNewsPost $request)
     {
-        $result = News::find($id)->update($request->validated());
+        $result = News::find($news->id)->update($request->validated());
 
         if($result)
-            return redirect()->route('admin.news.create')
+            return redirect()->route('admin.news.index')
                 ->with('success', 'Новость изменена');
         else
             return back()->with('error', 'Ошибка изменения новости');
@@ -132,15 +145,15 @@ class NewsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\News  $news
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(News $news)
     {
-        $result = News::find($id)->destroy($id);
+        $result = News::find($news->id)->destroy($news->id);
 
         if($result)
-            return redirect()->route('admin.news.create')
+            return redirect()->route('admin.news.index')
                 ->with('success', 'Новость удалена');
         else
             return back()->with('error', 'Ошибка удаления новости');

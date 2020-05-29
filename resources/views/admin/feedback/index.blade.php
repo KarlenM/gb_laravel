@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-@include('admin.feedback.partials.messages')
+@include('admin.partials.messages')
     <div id="feedback-list">
         {{ $feedback->links() }}
         <div>№</div>
@@ -16,8 +16,20 @@
             <div>{{ $feedbackOne['firstname'] }}</div>
             <div>{{ $feedbackOne['message'] }}</div>
             <div class="control">
-                <a href="{{ route('admin.feedback.edit', ['feedback' => $feedbackOne]) }}" title="Редактировать">Редактировать</a>
-                <form action="{{ route('admin.feedback.destroy', ['feedback' => $feedbackOne])}}" method="POST">
+                <a href="{{
+                    route('admin.feedback.edit',
+                        [
+                            'feedback' => $feedbackOne
+                        ]
+                    )
+                }}" title="Редактировать">Редактировать</a>
+                <form action="{{
+                    route('admin.feedback.destroy',
+                        [
+                            'feedback' => $feedbackOne
+                        ]
+                    )
+                }}" method="POST">
                     @csrf
                     @method('DELETE')
                     <button type="submit">Удалить</button>

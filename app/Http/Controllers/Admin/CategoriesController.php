@@ -34,7 +34,9 @@ class CategoriesController extends Controller
         ->paginate(10);
 
         return view('admin.categories.index',
-            ['categories' => $categories]
+            [
+                'categories' => $categories
+            ]
         );
     }
 
@@ -51,6 +53,7 @@ class CategoriesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
+     * @param  \App\Models\Categories  $categories
      * @param  \App\Http\Requests\CategoriesPostRequest  $request
      * @return \Illuminate\Http\Response
      */
@@ -59,7 +62,7 @@ class CategoriesController extends Controller
         $categories->fill($request->validated())->save();
 
         if($categories)
-            return redirect()->route('admin.categories.create')
+            return redirect()->route('admin.categories.index')
                 ->with('success', 'Категория добавлена');
         else
             return back()->with('error', 'Ошибка добавления категории');
@@ -68,7 +71,7 @@ class CategoriesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Categories  $categories
+     * @param  \App\Models\Categories  $categories
      * @return \Illuminate\Http\Response
      */
     public function show(Categories $categories)
@@ -79,29 +82,31 @@ class CategoriesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Categories  $categories
+     * @param  \App\Models\Categories  $categories
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Categories $category)
     {
         return view('admin.categories.edit', 
-            ['categories' => Categories::find($id)]
+            [
+                'category' => Categories::find($category->id)
+            ]
         );
     }
 
     /**
      * Update the specified resource in storage.
      *
+     * @param  \App\Models\Categories  $categories
      * @param  \App\Http\Requests\CategoriesPostRequest  $request
-     * @param  \App\Categories  $categories
      * @return \Illuminate\Http\Response
      */
-    public function update(CategoriesPostRequest $request, $id)
+    public function update(Categories $category, CategoriesPostRequest $request)
     {
-        $result = Categories::find($id)->update($request->validated());
+        $result = Categories::find($category->id)->update($request->validated());
 
         if($result)
-            return redirect()->route('admin.categories.edit')
+            return redirect()->route('admin.categories.index')
                 ->with('success', 'Категория изменена');
         else
             return back()->with('error', 'Ошибка изменения категории');
@@ -113,12 +118,12 @@ class CategoriesController extends Controller
      * @param  \App\Categories  $categories
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Categories  $category)
     {
-        $result = Categories::find($id)->destroy($id);
+        $result = Categories::find($category->id)->destroy($category->id);
 
         if($result)
-            return redirect()->route('admin.categories.create')
+            return redirect()->route('admin.categories.index')
                 ->with('success', 'Категория удалена');
         else
             return back()->with('error', 'Ошибка удаления категории');

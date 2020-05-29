@@ -1,4 +1,5 @@
 <?php $__env->startSection('content'); ?>
+
 <div class="featured-post-area">
     <div class="container">
         <div class="row">
@@ -8,11 +9,25 @@
                     <div class="col-12 col-lg-7">
                         <div class="single-blog-post featured-post">
                             <div class="post-thumb">
-                                <a href="<?php echo e(route('news.show', ['category' => $news[0]->categories->name_lat, 'news' => $news[0]])); ?>"><img src="img/bg-img/3.jpg" alt=""></a>
+                                <a href="<?php echo e(route('news.show',
+                                        [
+                                            'category' => $news[0]->categories->name_lat,
+                                            'id' => $news[0]->id
+                                        ]
+                                    )); ?>"><img src="img/bg-img/3.jpg" alt=""></a>
                             </div>
                             <div class="post-data">
-                                <a href="<?php echo e(route('news.category', ['category' => $news[0]->categories->name_lat])); ?>" class="post-catagory"><?php echo e($news[0]->categories->name_cyr); ?></a>
-                                <a href="<?php echo e(route('news.show', ['category' => $news[0]->categories->name_lat, 'news' => $news[0]])); ?>" class="post-title">
+                                <a href="<?php echo e(route('news.category',
+                                        [
+                                            'category' => $news[0]->categories->name_lat
+                                        ]
+                                    )); ?>" class="post-catagory"><?php echo e($news[0]->categories->name_cyr); ?></a>
+                                <a href="<?php echo e(route('news.show',
+                                        [
+                                            'category' => $news[0]->categories->name_lat, 
+                                            'id' => $news[0]->id
+                                        ]
+                                    )); ?>" class="post-title">
                                     <h6><?php echo e($news[0]['title']); ?></h6>
                                 </a>
                                 <div class="post-meta">
@@ -33,12 +48,26 @@
                         <!-- Single Featured Post -->
                         <div class="single-blog-post featured-post-2">
                             <div class="post-thumb">
-                                <a href="<?php echo e(route('news.show', ['category' => $news->categories->name_lat, 'news' => $news])); ?>"><img src="img/bg-img/<?php echo e($key); ?>.jpg" alt=""></a>
+                                <a href="<?php echo e(route('news.show',
+                                        [
+                                            'category' => $news->categories->name_lat,
+                                            'id' => $news->id
+                                        ]
+                                    )); ?>"><img src="img/bg-img/<?php echo e($key); ?>.jpg" alt=""></a>
                             </div>
                             <div class="post-data">
-                                <a href="<?php echo e(route('news.category', ['category' => $news->categories->name_lat])); ?>" class="post-catagory"><?php echo e($news->categories->name_cyr); ?></a>
+                                <a href="<?php echo e(route('news.category',
+                                        [
+                                            'category' => $news->categories->name_lat
+                                        ]
+                                    )); ?>" class="post-catagory"><?php echo e($news->categories->name_cyr); ?></a>
                                 <div class="post-meta">
-                                    <a href="<?php echo e(route('news.show', ['category' => $news->categories->name_lat, 'news' => $news])); ?>" class="post-title">
+                                    <a href="<?php echo e(route('news.show',
+                                            [
+                                                'category' => $news->categories->name_lat,
+                                                'id' => $news->id
+                                            ]
+                                        )); ?>" class="post-title">
                                         <h6><?php echo e($news['title']); ?></h6>
                                     </a>
                                     <!-- Post Like & Post Comment -->
@@ -60,12 +89,26 @@
                 <!-- Single Featured Post -->
                 <div class="single-blog-post small-featured-post d-flex">
                     <div class="post-thumb">
-                        <a href="<?php echo e(route('news.show', ['category' => $news->categories->name_lat, 'news' => $news])); ?>"><img src="img/bg-img/<?php echo e($key); ?>.jpg" alt=""></a>
+                        <a href="<?php echo e(route('news.show',
+                                [
+                                    'category' => $news->categories->name_lat,
+                                    'id' => $news->id
+                                ]
+                            )); ?>"><img src="img/bg-img/<?php echo e($key); ?>.jpg" alt=""></a>
                     </div>
                     <div class="post-data">
-                        <a href="<?php echo e(route('news.category', ['category' => $news->categories->name_lat])); ?>" class="post-catagory"><?php echo e($news->categories->name_cyr); ?></a>
+                        <a href="<?php echo e(route('news.category',
+                                [
+                                    'category' => $news->categories->name_lat
+                                ]
+                            )); ?>" class="post-catagory"><?php echo e($news->categories->name_cyr); ?></a>
                         <div class="post-meta">
-                            <a href="<?php echo e(route('news.show', ['category' => $news->categories->name_lat, 'news' => $news])); ?>" class="post-title">
+                            <a href="<?php echo e(route('news.show',
+                                    [
+                                        'category' => $news->categories->name_lat, 
+                                        'id' => $news->id
+                                    ]
+                                )); ?>" class="post-title">
                                 <h6><?php echo e($news['title']); ?></h6>
                             </a>
                             <p class="post-date"><span>7:00 AM</span> | <span>April 14</span></p>
@@ -79,4 +122,4 @@
     </div>
 </div>
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /var/www/html/resources/views/news/categories/index.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.master', ['categories' => $categories], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /var/www/html/resources/views/news/categories/index.blade.php ENDPATH**/ ?>

@@ -4,7 +4,6 @@
     <div class="add-form">
         <form method="POST" action="{{ route('admin.news.store') }}">
             @csrf
-            @include('admin.news.partials.messages')
             <span>Заголовок</span>
             <input type="text" name="title" value="{{ old('title') }}">
                 @error('title')

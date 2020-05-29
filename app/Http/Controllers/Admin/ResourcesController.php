@@ -50,6 +50,7 @@ class ResourcesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
+     * @param  \App\Models\Resources  $resources
      * @param \App\Http\Requests\ResourcesPostRequest $request
      * @return \Illuminate\Http\Response
      */
@@ -67,7 +68,7 @@ class ResourcesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Resources  $resources
+     * @param  \App\Models\Resources  $resources
      * @return \Illuminate\Http\Response
      */
     public function show(Resources $resources)
@@ -78,32 +79,26 @@ class ResourcesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Resources  $resources
+     * @param  \App\Models\Resources  $resources
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Resources $resource)
     {
-        $resources = Resources::select(
-            'id',
-            'name',
-            'created_at'
-        )->find($id);
-
-        return view('admin.resources.edit', 
-            ['resources' => $resources]
+        return view('admin.resources.edit',
+            ['resource' => $resource]
         );
     }
 
     /**
      * Update the specified resource in storage.
      *
+     * @param  \App\Models\Resources  $resources
      * @param  \App\Http\Requests\ResourcesPostRequest  $request
-     * @param  \App\Resources  $resources
      * @return \Illuminate\Http\Response
      */
-    public function update(ResourcesPostRequest $request, $id)
+    public function update(Resources $resource, ResourcesPostRequest $request)
     {
-        $result = Resources::find($id)->update($request->validated());
+        $result = Resources::find($resource->id)->update($request->validated());
 
         if($result)
             return redirect()->route('admin.resources.index')
@@ -115,12 +110,12 @@ class ResourcesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Resources  $resources
+     * @param  \App\Models\Resources  $resources
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Resources $resource)
     {
-        $result = Resources::find($id)->destroy($id);
+        $result = Resources::destroy($resource->id);
 
         if($result)
             return redirect()->route('admin.resources.index')

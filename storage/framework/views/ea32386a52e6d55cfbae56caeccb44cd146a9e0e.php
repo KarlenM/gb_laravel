@@ -1,45 +1,61 @@
 <?php $__env->startSection('content'); ?>
     <div class="add-form">
-        <form method="POST" action="<?php echo e(route('admin.download-order.update', ['downloadOrder' => $downloadOrder])); ?>">
+        <form method="POST" action="<?php echo e(route('admin.download-order.update', 
+                [
+                    'download_order' => $downloadOrder
+                ]
+            )); ?>">
             <?php echo csrf_field(); ?>
             <?php echo method_field('PUT'); ?>
             <?php echo $__env->make('admin.download-order.partials.messages', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
             <span>Имя</span>
             <input type="text" name="firstname" value="<?php echo e($downloadOrder->firstname); ?>">
-                <?php if ($errors->has('firstname')) :
-if (isset($message)) { $messageCache = $message; }
-$message = $errors->first('firstname'); ?>
+                <?php $__errorArgs = ['firstname'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                     <div class="alert alert-danger merge"><?php echo e($message); ?></div>
                 <?php unset($message);
-if (isset($messageCache)) { $message = $messageCache; }
-endif; ?>
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
             <span>Телефон</span>
             <input type="text" name="tel" value="<?php echo e($downloadOrder->tel); ?>">
-                <?php if ($errors->has('tel')) :
-if (isset($message)) { $messageCache = $message; }
-$message = $errors->first('tel'); ?>
+                <?php $__errorArgs = ['tel'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                     <div class="alert alert-danger merge"><?php echo e($message); ?></div>
                 <?php unset($message);
-if (isset($messageCache)) { $message = $messageCache; }
-endif; ?>
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
             <span>Email</span>
             <input type="text" name="email" value="<?php echo e($downloadOrder->email); ?>">
-                <?php if ($errors->has('email')) :
-if (isset($message)) { $messageCache = $message; }
-$message = $errors->first('email'); ?>
+                <?php $__errorArgs = ['email'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                     <div class="alert alert-danger merge"><?php echo e($message); ?></div>
                 <?php unset($message);
-if (isset($messageCache)) { $message = $messageCache; }
-endif; ?>
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
             <span>Сообщение</span>
             <textarea name="message"><?php echo e($downloadOrder->message); ?></textarea>
-                <?php if ($errors->has('message')) :
-if (isset($message)) { $messageCache = $message; }
-$message = $errors->first('message'); ?>
+                <?php $__errorArgs = ['message'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                     <div class="alert alert-danger merge"><?php echo e($message); ?></div>
                 <?php unset($message);
-if (isset($messageCache)) { $message = $messageCache; }
-endif; ?>
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
             <button type="submit" class="btn btn-primary merge">Сохранить</button>
         </form>
     </div>

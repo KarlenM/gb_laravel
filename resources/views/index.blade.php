@@ -1,7 +1,7 @@
-@extends('layouts.master')
+@extends('layouts.master', ['categories' => $categories])
 
 @section('content')
-{{-- @dd($test); --}}
+{{-- @dd($news); --}}
 <div class="featured-post-area">
     <div class="container">
         <div class="row">
@@ -15,7 +15,7 @@
                                     route('news.show', 
                                         [
                                             'category' => $news[0]->categories->name_lat, 
-                                            'news' => $news[0]
+                                            'id' => $news[0]->id
                                         ]
                                     )
                                 }}"><img src="img/bg-img/3.jpg" alt=""></a>
@@ -23,14 +23,16 @@
                             <div class="post-data">
                                 <a href="{{
                                     route('news.category', 
-                                        ['category' => $news[0]->categories->name_lat]
+                                        [
+                                            'category' => $news[0]->categories->name_lat
+                                            ]
                                     )
                                 }}" class="post-catagory">{{ $news[0]->categories->name_cyr }}</a>
                                 <a href="{{
                                     route('news.show',
                                     [
                                         'category' => $news[0]->categories->name_lat, 
-                                        'news' => $news[0]
+                                        'id' => $news[0]->id
                                     ])
                                 }}" class="post-title">
                                     <h6>{{ $news[0]['title'] }}</h6>
@@ -63,7 +65,7 @@
                                     route('news.show', 
                                         [
                                             'category' => $newsCategory->categories->name_lat, 
-                                            'news' => $newsCategory
+                                            'id' => $newsCategory->id
                                         ]
                                     )
                                 }}"><img src="img/bg-img/{{ $key }}.jpg" alt=""></a>
@@ -71,7 +73,9 @@
                             <div class="post-data">
                                 <a href="{{
                                     route('news.category', 
-                                        ['category' => $newsCategory->categories->name_lat]
+                                        [
+                                            'category' => $newsCategory->categories->name_lat
+                                        ]
                                     )
                                 }}" class="post-catagory">{{ $newsCategory->categories->name_cyr }}</a>
                                 <div class="post-meta">
@@ -79,7 +83,7 @@
                                         route('news.show', 
                                             [
                                                 'category' => $newsCategory->categories->name_lat,
-                                                'news' => $newsCategory
+                                                'id' => $newsCategory->id
                                             ]
                                         )
                                     }}" class="post-title">
@@ -114,14 +118,16 @@
                             route('news.show',
                             [
                                 'category' => $news->categories->name_lat, 
-                                'news' => $news
+                                'id' => $news->id
                             ])
                         }}"><img src="img/bg-img/{{ $key }}.jpg" alt=""></a>
                     </div>
                     <div class="post-data">
                         <a href="{{
                             route('news.category',
-                                ['category' => $news->categories->name_lat]
+                                [
+                                    'category' => $news->categories->name_lat
+                                ]
                             )
                         }}" class="post-catagory">{{ $news->categories->name_cyr }}</a>
                         <div class="post-meta">
@@ -129,7 +135,7 @@
                                 route('news.show',
                                     [
                                         'category' => $news->categories->name_lat,
-                                        'news' => $news
+                                        'id' => $news->id
                                     ]
                                 )
                             }}" class="post-title">

@@ -5,7 +5,6 @@
         <form method="POST" action="{{ route('admin.feedback.update', ['feedback' => $feedback]) }}">
             @csrf
             @method('PUT')
-            @include('admin.feedback.partials.messages')
             <span>Имя</span>
             <input type="text" name="firstname" value="{{ $feedback->firstname }}">
                 @error('firstname')

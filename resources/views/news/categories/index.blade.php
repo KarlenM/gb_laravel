@@ -1,6 +1,7 @@
-@extends('layouts.master')
+@extends('layouts.master', ['categories' => $categories])
 
 @section('content')
+{{-- @dd($news[0]->categories->name_lat); --}}
 <div class="featured-post-area">
     <div class="container">
         <div class="row">
@@ -10,11 +11,31 @@
                     <div class="col-12 col-lg-7">
                         <div class="single-blog-post featured-post">
                             <div class="post-thumb">
-                                <a href="{{ route('news.show', ['category' => $news[0]->categories->name_lat, 'news' => $news[0]]) }}"><img src="img/bg-img/3.jpg" alt=""></a>
+                                <a href="{{
+                                    route('news.show',
+                                        [
+                                            'category' => $news[0]->categories->name_lat,
+                                            'id' => $news[0]->id
+                                        ]
+                                    )
+                                }}"><img src="img/bg-img/3.jpg" alt=""></a>
                             </div>
                             <div class="post-data">
-                                <a href="{{ route('news.category', ['category' => $news[0]->categories->name_lat]) }}" class="post-catagory">{{ $news[0]->categories->name_cyr }}</a>
-                                <a href="{{ route('news.show', ['category' => $news[0]->categories->name_lat, 'news' => $news[0]]) }}" class="post-title">
+                                <a href="{{
+                                    route('news.category',
+                                        [
+                                            'category' => $news[0]->categories->name_lat
+                                        ]
+                                    )
+                                }}" class="post-catagory">{{ $news[0]->categories->name_cyr }}</a>
+                                <a href="{{
+                                    route('news.show',
+                                        [
+                                            'category' => $news[0]->categories->name_lat, 
+                                            'id' => $news[0]->id
+                                        ]
+                                    )
+                                }}" class="post-title">
                                     <h6>{{ $news[0]['title'] }}</h6>
                                 </a>
                                 <div class="post-meta">
@@ -35,12 +56,32 @@
                         <!-- Single Featured Post -->
                         <div class="single-blog-post featured-post-2">
                             <div class="post-thumb">
-                                <a href="{{ route('news.show', ['category' => $news->categories->name_lat, 'news' => $news]) }}"><img src="img/bg-img/{{ $key }}.jpg" alt=""></a>
+                                <a href="{{
+                                    route('news.show',
+                                        [
+                                            'category' => $news->categories->name_lat,
+                                            'id' => $news->id
+                                        ]
+                                    )
+                                }}"><img src="img/bg-img/{{ $key }}.jpg" alt=""></a>
                             </div>
                             <div class="post-data">
-                                <a href="{{ route('news.category', ['category' => $news->categories->name_lat]) }}" class="post-catagory">{{ $news->categories->name_cyr }}</a>
+                                <a href="{{
+                                    route('news.category',
+                                        [
+                                            'category' => $news->categories->name_lat
+                                        ]
+                                    )
+                                }}" class="post-catagory">{{ $news->categories->name_cyr }}</a>
                                 <div class="post-meta">
-                                    <a href="{{ route('news.show', ['category' => $news->categories->name_lat, 'news' => $news]) }}" class="post-title">
+                                    <a href="{{
+                                        route('news.show',
+                                            [
+                                                'category' => $news->categories->name_lat,
+                                                'id' => $news->id
+                                            ]
+                                        )
+                                    }}" class="post-title">
                                         <h6>{{ $news['title'] }}</h6>
                                     </a>
                                     <!-- Post Like & Post Comment -->
@@ -62,12 +103,32 @@
                 <!-- Single Featured Post -->
                 <div class="single-blog-post small-featured-post d-flex">
                     <div class="post-thumb">
-                        <a href="{{ route('news.show', ['category' => $news->categories->name_lat, 'news' => $news]) }}"><img src="img/bg-img/{{ $key }}.jpg" alt=""></a>
+                        <a href="{{
+                            route('news.show',
+                                [
+                                    'category' => $news->categories->name_lat,
+                                    'id' => $news->id
+                                ]
+                            )
+                        }}"><img src="img/bg-img/{{ $key }}.jpg" alt=""></a>
                     </div>
                     <div class="post-data">
-                        <a href="{{ route('news.category', ['category' => $news->categories->name_lat]) }}" class="post-catagory">{{ $news->categories->name_cyr }}</a>
+                        <a href="{{
+                            route('news.category',
+                                [
+                                    'category' => $news->categories->name_lat
+                                ]
+                            )
+                        }}" class="post-catagory">{{ $news->categories->name_cyr }}</a>
                         <div class="post-meta">
-                            <a href="{{ route('news.show', ['category' => $news->categories->name_lat, 'news' => $news]) }}" class="post-title">
+                            <a href="{{
+                                route('news.show',
+                                    [
+                                        'category' => $news->categories->name_lat, 
+                                        'id' => $news->id
+                                    ]
+                                )
+                            }}" class="post-title">
                                 <h6>{{ $news['title'] }}</h6>
                             </a>
                             <p class="post-date"><span>7:00 AM</span> | <span>April 14</span></p>

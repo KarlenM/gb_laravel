@@ -19,8 +19,16 @@
             <div><?php echo e($downloadOrderOne['email']); ?></div>
             <div><?php echo e($downloadOrderOne['message']); ?></div>
             <div class="control">
-                <a href="<?php echo e(route('admin.download-order.edit', ['downloadOrder' => $downloadOrderOne])); ?>" title="Редактировать">Редактировать</a>
-                <form action="<?php echo e(route('admin.download-order.destroy', ['downloadOrder' => $downloadOrderOne])); ?>" method="POST">
+                <a href="<?php echo e(route('admin.download-order.edit',
+                        [
+                            'download_order' => $downloadOrderOne
+                        ]
+                    )); ?>" title="Редактировать">Редактировать</a>
+                <form action="<?php echo e(route('admin.download-order.destroy', 
+                        [
+                            'download_order' => $downloadOrderOne
+                        ]
+                    )); ?>" method="POST">
                     <?php echo csrf_field(); ?>
                     <?php echo method_field('DELETE'); ?>
                     <button type="submit">Удалить</button>

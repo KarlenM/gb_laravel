@@ -1,7 +1,13 @@
 @extends('layouts.admin')
 
 @section('content')
-    <a href="{{ route('admin.categories.create') }}" title="Добавить категорию" id="news" class="add-link">Добавить категорию</a>
+@include('admin.partials.messages')
+    <a
+        href="{{route('admin.categories.create') }}"
+        title="Добавить категорию"
+        id="news"
+        class="add-link"
+    >Добавить категорию</a>
 
     <div id="categories-list">
         {{ $categories->links() }}
@@ -17,8 +23,20 @@
             <div>{{ $category['name_cyr'] }}</div>
             <div>{{ $category['name_lat'] }}</div>
             <div class="control">
-                <a href="{{ route('admin.categories.edit', ['categories' => $category]) }}" title="Редактировать">Редактировать</a>
-                <form action="{{ route('admin.categories.destroy', ['categories' => $category])}}" method="POST">
+                <a href="{{
+                    route('admin.categories.edit',
+                        [
+                            'category' => $category
+                        ]
+                    )
+                }}" title="Редактировать">Редактировать</a>
+                <form action="{{
+                    route('admin.categories.destroy',
+                        [
+                            'category' => $category
+                        ]
+                    )
+                }}" method="POST">
                     @csrf
                     @method('DELETE')
                     <button type="submit">Удалить</button>

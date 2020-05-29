@@ -5,7 +5,6 @@
         <form method="POST" action="{{ route('admin.news.update', ['news' => $news]) }}">
             @csrf
             @method('PUT')
-            @include('admin.news.partials.messages')
             <span>Заголовок</span>
             <input type="text" name="title" value="{{ $news->title }}">
                 @error('title')

@@ -7,6 +7,11 @@ use \App\Models\News;
 
 class NewsController extends Controller
 {
+    /**
+     * Display the specified resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index(){
         $news = News::select(
             'id',
@@ -33,7 +38,13 @@ class NewsController extends Controller
         );
     }
 
-    public function show($category, $id){
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\News $news
+     * @return \Illuminate\Http\Response
+     */
+    public function show(News $news){
         $categories = Categories::select(
             'name_lat',
             'name_cyr'
@@ -49,7 +60,7 @@ class NewsController extends Controller
             'text',
             'active',
             'created_at'
-        )->find($id);
+        )->find($news->id);
 
         return view('news.show', 
             [

@@ -2,12 +2,17 @@
 
 @section('content')
     <div class="add-form">
-        <form method="POST" action="{{ route('admin.resources.update', ['resources' => $resources]) }}">
+        <form method="POST" action="{{
+            route('admin.resources.update',
+                [
+                    'resource' => $resource
+                ]
+            )
+        }}">
             @csrf
             @method('PUT')
-            @include('admin.resources.partials.messages')
             <span>Наименование</span>
-            <input type="text" name="name" value="{{ $resources->name }}">
+            <input type="text" name="name" value="{{ $resource->name }}">
                 @error('name')
                     <div class="alert alert-danger merge">{{ $message }}</div>
                 @enderror

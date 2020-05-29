@@ -3,7 +3,6 @@
         <div class="alert alert-success merge">
             <?php echo e(session()->get('success')); ?>
 
-            <a href="<?php echo e(route('admin.news.index')); ?>"><br>Вернуться к списку новостей</a>
         </div>
     <?php elseif(session()->has('error')): ?>
         <div class="alert alert-danger merge">

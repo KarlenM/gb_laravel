@@ -4,7 +4,6 @@
     <div class="add-form">
         <form method="POST" action="{{ route('admin.resources.store') }}">
             @csrf
-            @include('admin.resources.partials.messages')
             <span>Наименование</span>
             <input type="text" name="name" value="{{ old('name') }}" placeholder="Спорт">
                 @error('name')

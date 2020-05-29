@@ -7,22 +7,28 @@
                 <?php echo csrf_field(); ?>
                 <span>Имя</span>
                 <input type="text" name="firstname" value="<?php echo e(old('firstname')); ?>">
-                    <?php if ($errors->has('firstname')) :
-if (isset($message)) { $messageCache = $message; }
-$message = $errors->first('firstname'); ?>
+                    <?php $__errorArgs = ['firstname'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                         <div class="alert alert-danger merge"><?php echo e($message); ?></div>
                     <?php unset($message);
-if (isset($messageCache)) { $message = $messageCache; }
-endif; ?>
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                 <span class="merge">Отзыв</span>
                 <textarea name="message" cols="30" rows="4" class="merge"><?php echo e(old('message')); ?></textarea>
-                    <?php if ($errors->has('message')) :
-if (isset($message)) { $messageCache = $message; }
-$message = $errors->first('message'); ?>
+                    <?php $__errorArgs = ['message'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                         <div class="alert alert-danger merge"><?php echo e($message); ?></div>
                     <?php unset($message);
-if (isset($messageCache)) { $message = $messageCache; }
-endif; ?>
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                 <button type="submit" class="btn btn-primary merge">Заказать</button>
             </form>
         </div>

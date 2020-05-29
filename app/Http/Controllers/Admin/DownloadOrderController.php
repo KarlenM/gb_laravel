@@ -34,7 +34,7 @@ class DownloadOrderController extends Controller
             'created_at',
         )
         ->orderBy('id', 'DESC')
-        ->paginate(10);
+        ->paginate(5);
 
         return view('admin.download-order.index',
             ['downloadOrder' => $downloadOrder]
@@ -79,10 +79,10 @@ class DownloadOrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(DownloadOrder $downloadOrder)
     {
         return view('admin.download-order.edit', 
-            ['downloadOrder' => DownloadOrder::find($id)]
+            ['downloadOrder' => DownloadOrder::find($downloadOrder->id)]
         );
     }
 
@@ -93,9 +93,9 @@ class DownloadOrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(DownloadOrderPostRequest $request, $id)
+    public function update(DownloadOrder $downloadOrder, DownloadOrderPostRequest $request)
     {
-        $result = DownloadOrder::find($id)->update($request->validated());
+        $result = DownloadOrder::find($downloadOrder->id)->update($request->validated());
 
         if($result)
             return redirect()->route('admin.download-order.index')
@@ -110,9 +110,9 @@ class DownloadOrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(DownloadOrder $downloadOrder)
     {
-        $result = DownloadOrder::find($id)->destroy($id);
+        $result = DownloadOrder::find($downloadOrder->id)->destroy($downloadOrder->id);
 
         if($result)
             return redirect()->route('admin.download-order.index')

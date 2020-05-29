@@ -1,8 +1,13 @@
 @extends('layouts.admin')
 
 @section('content')
-@include('admin.resources.partials.messages')
-    <a href="{{ route('admin.resources.create') }}" title="Добавить ресурс" id="news" class="add-link">Добавить ресурс</a>
+@include('admin.partials.messages')
+    <a 
+        href="{{route('admin.resources.create') }}" 
+        title="Добавить ресурс" 
+        id="news" 
+        class="add-link"
+    >Добавить ресурс</a>
 
     <div id="resources-list">
         {{ $resources->links() }}
@@ -16,8 +21,20 @@
             <div>{{ date('d.m.y', strtotime($resource['created_at'])) }}</div>
             <div>{{ $resource['name'] }}</div>
             <div class="control">
-                <a href="{{ route('admin.resources.edit', ['resources' => $resource]) }}" title="Редактировать">Редактировать</a>
-                <form action="{{ route('admin.resources.destroy', ['resources' => $resource])}}" method="POST">
+                <a href="{{
+                    route('admin.resources.edit',
+                        [
+                            'resource' => $resource
+                        ]
+                    )
+                }}" title="Редактировать">Редактировать</a>
+                <form action="{{
+                    route('admin.resources.destroy',
+                        [
+                            'resource' => $resource
+                        ]
+                    )
+                }}" method="POST">
                     @csrf
                     @method('DELETE')
                     <button type="submit">Удалить</button>

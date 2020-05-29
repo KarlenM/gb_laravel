@@ -5,13 +5,16 @@
             <?php echo $__env->make('admin.resources.partials.messages', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
             <span>Наименование</span>
             <input type="text" name="name" value="<?php echo e(old('name')); ?>" placeholder="Спорт">
-                <?php if ($errors->has('name')) :
-if (isset($message)) { $messageCache = $message; }
-$message = $errors->first('name'); ?>
+                <?php $__errorArgs = ['name'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                     <div class="alert alert-danger merge"><?php echo e($message); ?></div>
                 <?php unset($message);
-if (isset($messageCache)) { $message = $messageCache; }
-endif; ?>
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
             <button type="submit" class="btn btn-primary merge">Добавить</button>
         </form>
     </div>

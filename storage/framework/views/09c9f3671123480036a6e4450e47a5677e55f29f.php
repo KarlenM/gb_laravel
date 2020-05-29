@@ -1,5 +1,11 @@
 <?php $__env->startSection('content'); ?>
-    <a href="<?php echo e(route('admin.categories.create')); ?>" title="Добавить категорию" id="news" class="add-link">Добавить категорию</a>
+<?php echo $__env->make('admin.partials.messages', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+    <a
+        href="<?php echo e(route('admin.categories.create')); ?>"
+        title="Добавить категорию"
+        id="news"
+        class="add-link"
+    >Добавить категорию</a>
 
     <div id="categories-list">
         <?php echo e($categories->links()); ?>
@@ -16,8 +22,16 @@
             <div><?php echo e($category['name_cyr']); ?></div>
             <div><?php echo e($category['name_lat']); ?></div>
             <div class="control">
-                <a href="<?php echo e(route('admin.categories.edit', ['categories' => $category])); ?>" title="Редактировать">Редактировать</a>
-                <form action="<?php echo e(route('admin.categories.destroy', ['categories' => $category])); ?>" method="POST">
+                <a href="<?php echo e(route('admin.categories.edit',
+                        [
+                            'category' => $category
+                        ]
+                    )); ?>" title="Редактировать">Редактировать</a>
+                <form action="<?php echo e(route('admin.categories.destroy',
+                        [
+                            'category' => $category
+                        ]
+                    )); ?>" method="POST">
                     <?php echo csrf_field(); ?>
                     <?php echo method_field('DELETE'); ?>
                     <button type="submit">Удалить</button>

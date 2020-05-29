@@ -1,5 +1,5 @@
 <?php $__env->startSection('content'); ?>
-<?php echo $__env->make('admin.feedback.partials.messages', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<?php echo $__env->make('admin.partials.messages', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <div id="feedback-list">
         <?php echo e($feedback->links()); ?>
 
@@ -15,8 +15,16 @@
             <div><?php echo e($feedbackOne['firstname']); ?></div>
             <div><?php echo e($feedbackOne['message']); ?></div>
             <div class="control">
-                <a href="<?php echo e(route('admin.feedback.edit', ['feedback' => $feedbackOne])); ?>" title="Редактировать">Редактировать</a>
-                <form action="<?php echo e(route('admin.feedback.destroy', ['feedback' => $feedbackOne])); ?>" method="POST">
+                <a href="<?php echo e(route('admin.feedback.edit',
+                        [
+                            'feedback' => $feedbackOne
+                        ]
+                    )); ?>" title="Редактировать">Редактировать</a>
+                <form action="<?php echo e(route('admin.feedback.destroy',
+                        [
+                            'feedback' => $feedbackOne
+                        ]
+                    )); ?>" method="POST">
                     <?php echo csrf_field(); ?>
                     <?php echo method_field('DELETE'); ?>
                     <button type="submit">Удалить</button>

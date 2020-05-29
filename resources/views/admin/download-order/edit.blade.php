@@ -2,10 +2,15 @@
 
 @section('content')
     <div class="add-form">
-        <form method="POST" action="{{ route('admin.download-order.update', ['downloadOrder' => $downloadOrder]) }}">
+        <form method="POST" action="{{
+            route('admin.download-order.update', 
+                [
+                    'download_order' => $downloadOrder
+                ]
+            )
+        }}">
             @csrf
             @method('PUT')
-            @include('admin.download-order.partials.messages')
             <span>Имя</span>
             <input type="text" name="firstname" value="{{ $downloadOrder->firstname }}">
                 @error('firstname')
