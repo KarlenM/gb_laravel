@@ -9,36 +9,47 @@ use \App\Models\User;
 
 class FeedbackTest extends DuskTestCase
 {
-    /**
-     * A Dusk test example.
-     *
-     * @return void
-     */
-    // public function testStore()
-    // {
-    //     $this->browse(function (Browser $browser) {
-    //         $browser->visit('/feedback')
-    //                 ->type('firstname', 'BrowserTest')
-    //                 ->type('message', 'BrowserTest BrowserTest BrowserTest BrowserTest BrowserTest')
-    //                 ->press('Заказать')
-    //                 ->assertPathIs('/feedback');
-    //     });
-    // }
+    public function testStore()
+    {
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/feedback')
+                    ->type('firstname', 'BrowserTest')
+                    ->type('message', 'BrowserTest BrowserTest BrowserTest BrowserTest BrowserTest')
+                    ->press('Заказать')
+                    ->assertPathIs('/feedback')
+                    ->assertSee('Обратная связь заказана, скоро с вами свяжустся')
+                    ->screenshot('/feedback/store');
+        });
+    }
+
+    public function testUpdate()
+    {
+        $this->browse(function (Browser $browser) {
+            $browser->loginAs(User::find(4))
+                    ->visit('/admin')
+                    ->clickLink('Обратная связь')
+                    ->assertPathIs('/admin/feedback')
+                    ->click('@edit-button')
+                    ->type('firstname', 'BrowserTest')
+                    ->append('message', '. Addition text test.')
+                    ->press('Сохранить')
+                    ->assertPathIs('/admin/feedback')
+                    ->assertSee('Обратная связь изменена')
+                    ->screenshot('/feedback/update');
+        });
+    }
 
     public function testDestroy()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/admin/login')
-                    ->type('email', 'smokdog@me.com')
-                    ->type('password', 'KHMw5mx9CHdf9eT')
-                    ->press('Войти')
-                    ->visit('/admin/feedback')
-                    ->click('button[type=submit]')
-                    ->assertPathIs('/admin/feedback');
+            $browser->loginAs(User::find(4))
+                    ->visit('/admin')
+                    ->clickLink('Обратная связь')
+                    ->assertPathIs('/admin/feedback')
+                    ->click('@delete-button')
+                    ->assertPathIs('/admin/feedback')
+                    ->assertSee('Обратная связь удалена')
+                    ->screenshot('/feedback/destroy');
         });
     }
 }
-
-
-// smokdog@me.com
-//         KHMw5mx9CHdf9eT

@@ -31,6 +31,7 @@ class CategoriesController extends Controller
             'name_lat',
             'created_at',
         )
+        ->orderBy('id', 'DESC')
         ->paginate(10);
 
         return view('admin.categories.index',

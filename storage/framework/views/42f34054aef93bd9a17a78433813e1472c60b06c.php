@@ -7,7 +7,6 @@
             )); ?>">
             <?php echo csrf_field(); ?>
             <?php echo method_field('PUT'); ?>
-            <?php echo $__env->make('admin.resources.partials.messages', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
             <span>Наименование</span>
             <input type="text" name="name" value="<?php echo e($resource->name); ?>">
                 <?php $__errorArgs = ['name'];

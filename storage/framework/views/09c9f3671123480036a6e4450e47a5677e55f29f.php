@@ -22,11 +22,15 @@
             <div><?php echo e($category['name_cyr']); ?></div>
             <div><?php echo e($category['name_lat']); ?></div>
             <div class="control">
-                <a href="<?php echo e(route('admin.categories.edit',
-                        [
-                            'category' => $category
-                        ]
-                    )); ?>" title="Редактировать">Редактировать</a>
+                <a 
+                    <?php if($loop->first): ?> dusk="edit-button" <?php endif; ?>
+                        href="<?php echo e(route('admin.categories.edit',
+                            [
+                                'category' => $category
+                            ]
+                        )); ?>" 
+                    title="Редактировать"
+                >Редактировать</a>
                 <form action="<?php echo e(route('admin.categories.destroy',
                         [
                             'category' => $category
@@ -34,7 +38,10 @@
                     )); ?>" method="POST">
                     <?php echo csrf_field(); ?>
                     <?php echo method_field('DELETE'); ?>
-                    <button type="submit">Удалить</button>
+                    <button 
+                        <?php if($loop->first): ?> dusk="delete-button" <?php endif; ?>
+                        type="submit"
+                    >Удалить</button>
                 </form>
             </div>
             <hr>

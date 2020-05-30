@@ -35,8 +35,8 @@ class CategoriesPostRequest extends FormRequest
     public function rules()
     {
         return [
-            'name_cyr' => 'required|min:1|max:10',
-            'name_lat' => 'required|min:1|max:10',
+            'name_cyr' => 'required|min:1|max:15|unique:categories',
+            'name_lat' => 'required|min:1|max:15|unique:categories',
             'updated_user_id' => 'required|numeric',
             'created_user_id' => 'required|numeric',
             'ip' => 'required|ipv4'

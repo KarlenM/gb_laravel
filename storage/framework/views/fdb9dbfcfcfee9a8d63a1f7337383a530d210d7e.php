@@ -2,7 +2,6 @@
     <div class="add-form">
         <form method="POST" action="<?php echo e(route('admin.resources.store')); ?>">
             <?php echo csrf_field(); ?>
-            <?php echo $__env->make('admin.resources.partials.messages', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
             <span>Наименование</span>
             <input type="text" name="name" value="<?php echo e(old('name')); ?>" placeholder="Спорт">
                 <?php $__errorArgs = ['name'];

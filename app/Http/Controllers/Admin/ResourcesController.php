@@ -30,6 +30,7 @@ class ResourcesController extends Controller
             'name',
             'created_at'
         )
+        ->orderBy('id', 'DESC')
         ->paginate(10);
 
         return view('admin.resources.index',

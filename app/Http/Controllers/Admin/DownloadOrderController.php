@@ -99,7 +99,7 @@ class DownloadOrderController extends Controller
 
         if($result)
             return redirect()->route('admin.download-order.index')
-                ->with('success', 'Заказ выгрузки изменена');
+                ->with('success', 'Заказ выгрузки изменен');
         else
             return back()->with('error', 'Ошибка изменения заказа выгрузки');
     }

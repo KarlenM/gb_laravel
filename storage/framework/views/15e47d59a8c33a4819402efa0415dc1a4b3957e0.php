@@ -1,5 +1,5 @@
 <?php $__env->startSection('content'); ?>
-<?php echo $__env->make('admin.download-order.partials.messages', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<?php echo $__env->make('admin.partials.messages', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <div id="download-order-list">
         <?php echo e($downloadOrder->links()); ?>
 
@@ -19,19 +19,26 @@
             <div><?php echo e($downloadOrderOne['email']); ?></div>
             <div><?php echo e($downloadOrderOne['message']); ?></div>
             <div class="control">
-                <a href="<?php echo e(route('admin.download-order.edit',
-                        [
-                            'download_order' => $downloadOrderOne
-                        ]
-                    )); ?>" title="Редактировать">Редактировать</a>
-                <form action="<?php echo e(route('admin.download-order.destroy', 
+                <a 
+                    <?php if($loop->first): ?> dusk="edit-button" <?php endif; ?>
+                    href="<?php echo e(route('admin.download-order.edit',
+                            [
+                                'download_order' => $downloadOrderOne
+                            ]
+                        )); ?>"
+                    title="Редактировать"
+                >Редактировать</a>
+                <form action="<?php echo e(route('admin.download-order.destroy',
                         [
                             'download_order' => $downloadOrderOne
                         ]
                     )); ?>" method="POST">
                     <?php echo csrf_field(); ?>
                     <?php echo method_field('DELETE'); ?>
-                    <button type="submit">Удалить</button>
+                    <button
+                        <?php if($loop->first): ?> dusk="delete-button" <?php endif; ?>
+                        type="submit"
+                    >Удалить</button>
                 </form>
             </div>
             <hr>

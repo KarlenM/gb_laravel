@@ -15,11 +15,15 @@
             <div><?php echo e($feedbackOne['firstname']); ?></div>
             <div><?php echo e($feedbackOne['message']); ?></div>
             <div class="control">
-                <a href="<?php echo e(route('admin.feedback.edit',
-                        [
-                            'feedback' => $feedbackOne
-                        ]
-                    )); ?>" title="Редактировать">Редактировать</a>
+                <a 
+                    <?php if($loop->first): ?> dusk="edit-button" <?php endif; ?>
+                    href="<?php echo e(route('admin.feedback.edit',
+                            [
+                                'feedback' => $feedbackOne
+                            ]
+                        )); ?>"
+                    title="Редактировать"
+                >Редактировать</a>
                 <form action="<?php echo e(route('admin.feedback.destroy',
                         [
                             'feedback' => $feedbackOne
@@ -27,7 +31,10 @@
                     )); ?>" method="POST">
                     <?php echo csrf_field(); ?>
                     <?php echo method_field('DELETE'); ?>
-                    <button type="submit">Удалить</button>
+                    <button 
+                        <?php if($loop->first): ?> dusk="delete-button" <?php endif; ?>
+                        type="submit"
+                    >Удалить</button>
                 </form>
             </div>
             <hr>

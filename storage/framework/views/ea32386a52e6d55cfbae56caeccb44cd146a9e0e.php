@@ -7,7 +7,6 @@
             )); ?>">
             <?php echo csrf_field(); ?>
             <?php echo method_field('PUT'); ?>
-            <?php echo $__env->make('admin.download-order.partials.messages', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
             <span>Имя</span>
             <input type="text" name="firstname" value="<?php echo e($downloadOrder->firstname); ?>">
                 <?php $__errorArgs = ['firstname'];

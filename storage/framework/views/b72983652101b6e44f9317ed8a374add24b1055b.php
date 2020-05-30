@@ -24,11 +24,15 @@
             <div><?php echo e(Str::limit($oneNews['text'], 327, ' ...')); ?></div>
             <div><?php echo e($oneNews['img']); ?></div>
             <div class="control">
-                <a href="<?php echo e(route('admin.news.edit', 
-                        [
-                            'news' => $oneNews
-                        ]
-                    )); ?>" title="Редактировать">Редактировать</a>
+                <a 
+                    <?php if($loop->first): ?> dusk="edit-button" <?php endif; ?>
+                    href="<?php echo e(route('admin.news.edit', 
+                            [
+                                'news' => $oneNews
+                            ]
+                        )); ?>" 
+                    title="Редактировать"
+                >Редактировать</a>
                 <form action="<?php echo e(route('admin.news.destroy',
                         [
                             'news' => $oneNews
@@ -36,7 +40,10 @@
                     )); ?>" method="POST">
                     <?php echo csrf_field(); ?>
                     <?php echo method_field('DELETE'); ?>
-                    <button type="submit">Удалить</button>
+                    <button
+                        <?php if($loop->first): ?> dusk="delete-button" <?php endif; ?>
+                        type="submit"
+                    >Удалить</button>
                 </form>
             </div>
             <hr>
