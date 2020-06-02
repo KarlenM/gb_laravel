@@ -42,6 +42,11 @@
                                 Заказ выгрузки
                             </a>
                         </li>
+                        <li>
+                            <a href="{{ route('admin.profiles.index') }}" title="Управление Профилями">
+                                Профили
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>

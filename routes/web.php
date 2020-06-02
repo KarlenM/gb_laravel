@@ -23,7 +23,7 @@ Route::prefix('admin')->name('admin.')->group(
 
         // Новости
         Route::group([
-            'middleware' => ['auth']
+            'middleware' => ['auth', 'admin']
         ], function () {
             // Новости
             Route::resource('news', 'Admin\NewsController')
@@ -44,6 +44,10 @@ Route::prefix('admin')->name('admin.')->group(
             // Заказ выгрузки
             Route::resource('download-order', 'Admin\DownloadOrderController')
             ->except(['show', 'create', 'store']);
+
+            // Профили
+            Route::resource('profiles', 'Admin\ProfilesController')
+            ->only(['index', 'edit', 'update']);
         });
     }
 );

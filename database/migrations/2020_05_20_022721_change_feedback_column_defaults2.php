@@ -31,12 +31,9 @@ class ChangeFeedbackColumnDefaults2 extends Migration
      */
     public function down()
     {
-        {
             Schema::table('feedback', function (Blueprint $table) {
                 $table->dropColumn('updated_at');
                 $table->dropColumn('created_at');
-                $table->timestamp('updated_at');
-                $table->timestamp('created_at');
             });
     }
 }

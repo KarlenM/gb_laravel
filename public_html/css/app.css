@@ -99,6 +99,14 @@ span.success {
   justify-content: center;
 }
 
+#profiles-list {
+  display: grid;
+  grid-gap: 1em;
+  grid-template-columns: repeat(6, auto);
+  padding: 40px 20px 20px 20px;
+  justify-content: center;
+}
+
 #orders-list {
   grid-template-columns: repeat(6, max-content);
 }
@@ -115,10 +123,20 @@ span.success {
   grid-template-columns: repeat(5, max-content);
 }
 
+#profiles-list {
+  grid-template-columns: repeat(6, max-content);
+}
+
 #resources-list > div:first-child,
 #resources-list > div:nth-child(2),
 #resources-list > div:nth-child(3),
 #resources-list > div:nth-child(4),
+#profiles-list > div:first-child,
+#profiles-list > div:nth-child(2),
+#profiles-list > div:nth-child(3),
+#profiles-list > div:nth-child(4),
+#profiles-list > div:nth-child(5),
+#profiles-list > div:nth-child(6),
 #download-order-list > div:first-child,
 #download-order-list > div:nth-child(2),
 #download-order-list > div:nth-child(3),
@@ -161,6 +179,10 @@ span.success {
   grid-column: 1/6;
 }
 
+#profiles-list > nav {
+  grid-column: 1/7;
+}
+
 #download-order-list > nav {
   grid-column: 1/8;
 }
@@ -173,6 +195,7 @@ span.success {
   grid-column: 1/5;
 } */
 
+#profiles-list > hr,
 #orders-list > hr,
 #resources-list > hr,
 #download-order-list > hr,
@@ -181,6 +204,10 @@ span.success {
 #feedback-list > hr {
   margin: 3px;
   border-top: 1px solid #ee002d;
+}
+
+#profiles-list > hr  {
+  grid-column: 1/7;
 }
 
 #feedback-list > hr  {
@@ -210,6 +237,7 @@ span.success {
 #download-order-list > .control,
 #resources-list > .control,
 #news-list > .control,
+#profiles-list > .control,
 #feedback-list > .control,
 #categories-list > .control {
     display: grid;
@@ -222,6 +250,7 @@ input, select, textarea, a {
   outline: none;
 }
 
+#profiles-list > div.control > form > button,
 #resources-list > div.control > form > button,
 #download-order-list > div.control > form > button,
 #news-list > div.control > form > button,
@@ -233,6 +262,7 @@ input, select, textarea, a {
   padding: 0;
 }
 
+#profiles-list > div.control > form > button:hover,
 #news-list > div.control > form > button:hover,
 #resources-list > div.control > form > button:hover,
 #download-order-list > div.control > form > button:hover,
@@ -243,6 +273,7 @@ input, select, textarea, a {
   cursor: pointer;
 }
 
+#profiles.add-link,
 #news.add-link,
 #resources.add-link,
 #download-order.add-link,
@@ -253,6 +284,7 @@ input, select, textarea, a {
   font-size: 18px;
 }
 
+#profiles-list ul.pagination,
 #news-list ul.pagination,
 #resources-list ul.pagination,
 #download-order-list ul.pagination,
@@ -274,4 +306,9 @@ h3.control {
 
 #navbarSupportedContent > ul.navbar-nav.ml-auto > li > div > ul a {
   color: black;
+}
+
+.add-form > form > input[type="checkbox"] {
+  justify-self: right;
+  align-self: center;
 }
