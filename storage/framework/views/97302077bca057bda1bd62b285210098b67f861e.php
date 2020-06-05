@@ -5,7 +5,7 @@
         <meta name="description" content="">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Laravel HW 7 - Валидация данных в laravel</title>
+        <title>Laravel HW 8 - Посредники. Сессии в Laravel. Аутентификация</title>
         <link rel="icon" href="/img/core-img/favicon.ico">
         <link rel="stylesheet" href="/style.css">
     </head>

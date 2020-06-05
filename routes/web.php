@@ -18,6 +18,14 @@ Route::prefix('admin')->name('admin.')->group(
         // Маршруты авторизации
         Auth::routes();
 
+        // Авторизация через социальные сети
+        // Facebook
+        Route::get('login/facebook', 'Auth\SocialNetworks\FacebookAuthController@redirect')
+        ->name('login.facebook');
+
+        Route::get('login/facebook/callback', 'Auth\SocialNetworks\FacebookAuthController@handle')
+        ->name('login.facebook.callback')->with(['provider' => 'facebook']);
+
         // Главняа страница
         Route::get('', 'Admin\HomeController@index')->name('main');
 
@@ -76,3 +84,7 @@ Route::get('{category}/{id}', 'NewsController@show')
 // Новости по категориям
 Route::get('{category}', 'CategoriesController@index')
 ->name('news.category');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
