@@ -312,3 +312,24 @@ h3.control {
   justify-self: right;
   align-self: center;
 }
+
+div#parser {
+  display: grid;
+  justify-content: center;
+}
+
+div#parser > form {
+  display: grid;
+}
+
+div#parser > form > div {
+  grid-row-gap: 1em;
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  align-items: center;
+  padding: 20px 0;
+}
+
+div#parser > form > div > label {
+  margin: 0;
+}

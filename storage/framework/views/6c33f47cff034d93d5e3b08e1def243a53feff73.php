@@ -80,6 +80,21 @@
                                                 Заказ выгрузки
                                             </a>
                                         </li>
+                                        <li>
+                                            <a href="<?php echo e(route('admin.download-order.index')); ?>" title="Управление Заказами выгрузки">
+                                                Заказ выгрузки
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="<?php echo e(route('admin.profiles.index')); ?>" title="Управление Профилями">
+                                                Профили
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="<?php echo e(route('admin.parser.index')); ?>" title="Управление Заказами выгрузки">
+                                                Парсер новостей
+                                            </a>
+                                        </li>
                                     </ul>
                                     <a class="dropdown-item" href="<?php echo e(route('admin.logout')); ?>"
                                        onclick="event.preventDefault();

@@ -19,12 +19,12 @@ Route::prefix('admin')->name('admin.')->group(
         Auth::routes();
 
         // Авторизация через социальные сети
-        // Facebook
-        Route::get('login/facebook', 'Auth\SocialNetworks\FacebookAuthController@redirect')
-        ->name('login.facebook');
+            // Facebook
+            Route::get('login/facebook', 'Auth\SocialNetworks\FacebookAuthController@redirect')
+            ->name('login.facebook');
 
-        Route::get('login/facebook/callback', 'Auth\SocialNetworks\FacebookAuthController@handle')
-        ->name('login.facebook.callback')->with(['provider' => 'facebook']);
+            Route::get('login/facebook/callback', 'Auth\SocialNetworks\FacebookAuthController@handle')
+            ->name('login.facebook.callback');
 
         // Главняа страница
         Route::get('', 'Admin\HomeController@index')->name('main');
@@ -57,6 +57,14 @@ Route::prefix('admin')->name('admin.')->group(
             Route::resource('profiles', 'Admin\ProfilesController')
             ->only(['index', 'edit', 'update']);
         });
+
+        // Парсер новостей
+        Route::get('parser', 'Admin\ParserController@index')
+        ->name('parser.index');
+
+        // Парсер новостей
+        Route::get('parser/store', 'Admin\ParserController@store')
+        ->name('parser.store');
     }
 );
 // -------------------

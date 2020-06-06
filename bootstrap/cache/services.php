@@ -34,11 +34,13 @@
     30 => 'Laravel\\Ui\\UiServiceProvider',
     31 => 'Carbon\\Laravel\\ServiceProvider',
     32 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
-    33 => 'Barryvdh\\Debugbar\\ServiceProvider',
-    34 => 'App\\Providers\\AppServiceProvider',
-    35 => 'App\\Providers\\AuthServiceProvider',
-    36 => 'App\\Providers\\EventServiceProvider',
-    37 => 'App\\Providers\\RouteServiceProvider',
+    33 => 'Orchestra\\Parser\\XmlServiceProvider',
+    34 => 'Barryvdh\\Debugbar\\ServiceProvider',
+    35 => 'Orchestra\\Parser\\XmlServiceProvider',
+    36 => 'App\\Providers\\AppServiceProvider',
+    37 => 'App\\Providers\\AuthServiceProvider',
+    38 => 'App\\Providers\\EventServiceProvider',
+    39 => 'App\\Providers\\RouteServiceProvider',
   ),
   'eager' => 
   array (
@@ -176,6 +178,7 @@
     'validation.presence' => 'Illuminate\\Validation\\ValidationServiceProvider',
     'Laravel\\Socialite\\Contracts\\Factory' => 'Laravel\\Socialite\\SocialiteServiceProvider',
     'command.tinker' => 'Laravel\\Tinker\\TinkerServiceProvider',
+    'orchestra.parser.xml' => 'Orchestra\\Parser\\XmlServiceProvider',
   ),
   'when' => 
   array (
@@ -219,6 +222,9 @@
     array (
     ),
     'Laravel\\Tinker\\TinkerServiceProvider' => 
+    array (
+    ),
+    'Orchestra\\Parser\\XmlServiceProvider' => 
     array (
     ),
   ),

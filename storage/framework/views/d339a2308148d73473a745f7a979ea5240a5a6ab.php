@@ -46,6 +46,11 @@
                                 Профили
                             </a>
                         </li>
+                        <li>
+                            <a href="<?php echo e(route('admin.parser.index')); ?>" title="Парсер RSS">
+                                Парсер новостей
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>

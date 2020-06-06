@@ -47,6 +47,11 @@
                                 Профили
                             </a>
                         </li>
+                        <li>
+                            <a href="{{ route('admin.parser.index') }}" title="Парсер RSS">
+                                Парсер новостей
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>

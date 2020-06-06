@@ -18,7 +18,6 @@ class SocialAuthService
         $account = SocialAuth::whereProviderId($provider)
         ->whereProviderUserId($providerUser->getId())
         ->first();
-//leftJoin('social_providers', 'social_providers.id', '=', 'users_social_accounts.provider_id')
 
         if ($account)
             return $account->user;

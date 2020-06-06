@@ -80,6 +80,21 @@
                                                 Заказ выгрузки
                                             </a>
                                         </li>
+                                        <li>
+                                            <a href="{{ route('admin.download-order.index') }}" title="Управление Заказами выгрузки">
+                                                Заказ выгрузки
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('admin.profiles.index') }}" title="Управление Профилями">
+                                                Профили
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('admin.parser.index') }}" title="Управление Заказами выгрузки">
+                                                Парсер новостей
+                                            </a>
+                                        </li>
                                     </ul>
                                     <a class="dropdown-item" href="{{ route('admin.logout') }}"
                                        onclick="event.preventDefault();

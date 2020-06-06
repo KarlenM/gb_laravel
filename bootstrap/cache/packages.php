@@ -88,4 +88,11 @@
       0 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
     ),
   ),
+  'orchestra/parser' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Orchestra\\Parser\\XmlServiceProvider',
+    ),
+  ),
 );
