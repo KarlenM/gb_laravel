@@ -32,7 +32,7 @@
                                 </a>
                                 <div class="post-meta">
                                     <p class="post-author">By <a href="#"><?php echo e($news[0]['author']); ?></a></p>
-                                    <p class="post-excerp"><?php echo e(Str::limit($news[0]['text'], 327, ' ...')); ?></p>
+                                    <p class="post-excerp"><?php echo Str::limit($news[0]['text'], 327, ' ...'); ?></p>
                                     <!-- Post Like & Post Comment -->
                                     <div class="d-flex align-items-center">
                                         <a href="#" class="post-like"><img src="img/core-img/like.png" alt=""> <span>392</span></a>

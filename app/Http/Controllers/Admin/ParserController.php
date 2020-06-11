@@ -3,26 +3,21 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use \App\Models\Parser;
-use App\Http\Requests\ParserPostRequest;
+use App\Services\XMLParserService;
+use App\Jobs\NewsParsing;
+use App\Models\Sources;
 
 class ParserController extends Controller
 {
-    public function index()
+    public function index(XMLParserService $xMLParserService)
     {
-        return view('admin.parser.index');
-    }
+        $start = date('c');
 
-    public function store(ParserPostRequest $request)
-    {
-        $rss = $request->validated()['rss'];
+        $links = Sources::pluck('link')->toArray();
 
-        $result = (new Parser)->run($rss);
+        foreach($links as $link)
+            NewsParsing::dispatch($link, \Auth::id());
 
-        if($rss && $result)
-            return redirect()->route('admin.parser.index')
-                ->with('success', 'Сторонний ресурс ' . $rss . ' обработан. Добавлено ' . $result['count']);
-        else
-            return back()->with('error', 'Ошибка добавления новостей из стороннего ресурса');
+        return $start . ' - ' . date('c') . '<br>';
     }
 }

@@ -51,6 +51,11 @@
                                 Парсер новостей
                             </a>
                         </li>
+                        <li>
+                            <a href="<?php echo e(route('admin.sources.index')); ?>" title="Парсер RSS">
+                                RSS Источники
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>

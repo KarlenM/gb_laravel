@@ -107,6 +107,14 @@ span.success {
   justify-content: center;
 }
 
+#sources-list {
+  display: grid;
+  grid-gap: 1em;
+  grid-template-columns: repeat(5, auto);
+  padding: 40px 20px 20px 20px;
+  justify-content: center;
+}
+
 #orders-list {
   grid-template-columns: repeat(6, max-content);
 }
@@ -127,6 +135,17 @@ span.success {
   grid-template-columns: repeat(6, max-content);
 }
 
+#sources-list {
+  grid-template-columns: repeat(5, max-content);
+}
+
+
+
+#sources-list > div:first-child,
+#sources-list > div:nth-child(2),
+#sources-list > div:nth-child(3),
+#sources-list > div:nth-child(4),
+#sources-list > div:nth-child(5),
 #resources-list > div:first-child,
 #resources-list > div:nth-child(2),
 #resources-list > div:nth-child(3),
@@ -173,6 +192,7 @@ span.success {
   text-align: left;
 }
 
+#sources-list > nav,
 #resources-list > nav,
 #categories-list > nav,
 #feedback-list > nav {
@@ -195,6 +215,7 @@ span.success {
   grid-column: 1/5;
 } */
 
+#sources-list > hr,
 #profiles-list > hr,
 #orders-list > hr,
 #resources-list > hr,
@@ -204,6 +225,10 @@ span.success {
 #feedback-list > hr {
   margin: 3px;
   border-top: 1px solid #ee002d;
+}
+
+#sources-list > hr  {
+  grid-column: 1/6;
 }
 
 #profiles-list > hr  {
@@ -234,6 +259,7 @@ span.success {
   grid-column: 1/6;
 }
 
+#sources-list > .control,
 #download-order-list > .control,
 #resources-list > .control,
 #news-list > .control,
@@ -250,6 +276,7 @@ input, select, textarea, a {
   outline: none;
 }
 
+#sources-list > div.control > form > button,
 #profiles-list > div.control > form > button,
 #resources-list > div.control > form > button,
 #download-order-list > div.control > form > button,
@@ -262,6 +289,7 @@ input, select, textarea, a {
   padding: 0;
 }
 
+#sources-list > div.control > form > button:hover,
 #profiles-list > div.control > form > button:hover,
 #news-list > div.control > form > button:hover,
 #resources-list > div.control > form > button:hover,
@@ -273,6 +301,7 @@ input, select, textarea, a {
   cursor: pointer;
 }
 
+#sources.add-link,
 #profiles.add-link,
 #news.add-link,
 #resources.add-link,
@@ -284,6 +313,7 @@ input, select, textarea, a {
   font-size: 18px;
 }
 
+#sources-list ul.pagination,
 #profiles-list ul.pagination,
 #news-list ul.pagination,
 #resources-list ul.pagination,
@@ -323,7 +353,7 @@ div#parser > form {
 }
 
 div#parser > form > div {
-  grid-row-gap: 1em;
+  grid-row-gap: 1em; 
   display: grid;
   grid-template-columns: 20px 1fr;
   align-items: center;
@@ -332,4 +362,8 @@ div#parser > form > div {
 
 div#parser > form > div > label {
   margin: 0;
+}
+
+textarea#text + div[role=application] {
+  grid-column: 1/3;
 }

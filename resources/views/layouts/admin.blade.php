@@ -18,6 +18,10 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    {{-- <script src="//cdn.ckeditor.com/4.4.7/standard/ckeditor.js"></script> --}}
+    {{-- <script src="https://cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script> --}}
+
 </head>
 <body>
     <div id="app">

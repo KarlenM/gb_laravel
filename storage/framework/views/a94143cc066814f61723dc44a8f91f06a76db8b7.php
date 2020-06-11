@@ -1,4 +1,12 @@
 <?php $__env->startSection('content'); ?>
+<?php if($errors->any()): ?>
+    <div class="alert alert-danger merge">
+        <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <?php echo e($error); ?>
+
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+    </div>
+<?php endif; ?>
     <div class="add-form">
         <form method="POST" action="<?php echo e(route('admin.news.update', ['news' => $news])); ?>">
             <?php echo csrf_field(); ?>
@@ -84,7 +92,7 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
             <span class="merge">Новость</span>
-            <textarea name="text" cols="30" rows="10" class="merge"><?php echo e($news->text); ?></textarea>
+            <textarea id="text" name="text" cols="30" rows="10" class="merge"><?php echo e($news->text); ?></textarea>
                 <?php $__errorArgs = ['text'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -98,5 +106,21 @@ unset($__errorArgs, $__bag); ?>
             <button type="submit" class="btn btn-primary merge">Сохранить</button>
         </form>
     </div>
+        <!-- CKEditro -->
+        <script src="<?php echo e(asset("js/jquery/jquery-2.2.4.min.js")); ?>"></script>
+        <script src="<?php echo e(asset("ckeditor/ckeditor.js")); ?>"></script>
+        <script src="<?php echo e(asset("ckeditor/adapters/jquery.js")); ?>"></script>
+        <script>
+            $(document).ready(function () {
+                CKEDITOR.replace('text', {
+                    language: 'ru',
+                    height: '300',
+                    filebrowserBrowseUrl: '/filemanager?type=Images',
+                    filebrowserUploadUrl: '/filemanager/upload?type=Images&_token=',
+                    filebrowserImageBrowseUrl: '/filemanager?type=Files',
+                    filebrowserImageUploadUrl: '/filemanager/upload?type=Files&_token=',
+                });
+            });
+        </script>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /var/www/html/resources/views/admin/news/edit.blade.php ENDPATH**/ ?>

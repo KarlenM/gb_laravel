@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use \UniSharp\LaravelFilemanager\Lfm;
 
 // - Личный кабинет -
 Route::prefix('admin')->name('admin.')->group(
@@ -56,18 +57,32 @@ Route::prefix('admin')->name('admin.')->group(
             // Профили
             Route::resource('profiles', 'Admin\ProfilesController')
             ->only(['index', 'edit', 'update']);
+
+            // Источники
+            Route::resource('sources', 'Admin\SourcesController')
+            ->except(['show']);
         });
 
         // Парсер новостей
-        Route::get('parser', 'Admin\ParserController@index')
-        ->name('parser.index');
-
-        // Парсер новостей
-        Route::get('parser/store', 'Admin\ParserController@store')
-        ->name('parser.store');
+        Route::get('parser', 'Admin\ParserController@index');
     }
 );
 // -------------------
+
+Route::group(
+    [
+        'prefix' => 'laravel-filemanager', 
+        'middleware' => 
+            [
+                'web', 
+                'auth', 
+                'admin'
+            ]
+    ], function () {
+        Lfm::routes();
+    }
+);
+
 
 // Главная страница
 Route::get('/', 'NewsController@index')

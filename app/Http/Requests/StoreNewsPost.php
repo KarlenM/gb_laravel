@@ -43,7 +43,7 @@ class StoreNewsPost extends FormRequest
             'text' => 'required|min:10',
             'updated_user_id' => 'required|numeric',
             'created_user_id' => 'required|numeric',
-            'ip' => 'required|ipv4'
+            'ip' => 'required|ipv4',
         ];
     }
 }

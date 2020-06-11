@@ -52,6 +52,11 @@
                                 Парсер новостей
                             </a>
                         </li>
+                        <li>
+                            <a href="{{ route('admin.sources.index') }}" title="Парсер RSS">
+                                RSS Источники
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>

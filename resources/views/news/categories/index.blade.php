@@ -40,7 +40,7 @@
                                 </a>
                                 <div class="post-meta">
                                     <p class="post-author">By <a href="#">{{ $news[0]['author'] }}</a></p>
-                                    <p class="post-excerp">{{ Str::limit($news[0]['text'], 327, ' ...') }}</p>
+                                    <p class="post-excerp">{!! Str::limit($news[0]['text'], 327, ' ...') !!}</p>
                                     <!-- Post Like & Post Comment -->
                                     <div class="d-flex align-items-center">
                                         <a href="#" class="post-like"><img src="img/core-img/like.png" alt=""> <span>392</span></a>

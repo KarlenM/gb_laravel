@@ -42,6 +42,17 @@
       0 => 'Fruitcake\\Cors\\CorsServiceProvider',
     ),
   ),
+  'intervention/image' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Intervention\\Image\\ImageServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'Image' => 'Intervention\\Image\\Facades\\Image',
+    ),
+  ),
   'laravel/dusk' => 
   array (
     'providers' => 
@@ -93,6 +104,16 @@
     'providers' => 
     array (
       0 => 'Orchestra\\Parser\\XmlServiceProvider',
+    ),
+  ),
+  'unisharp/laravel-filemanager' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'UniSharp\\LaravelFilemanager\\LaravelFilemanagerServiceProvider',
+    ),
+    'aliases' => 
+    array (
     ),
   ),
 );
